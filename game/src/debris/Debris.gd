@@ -5,5 +5,5 @@ func _ready() -> void:
 
 func _on_Area2D_body_entered(body: Node) -> void:
 	if(body.name == 'Spaceship'):
-		print("Crashed into Spaceship!")
+		Globals.append_to_statuslog("- Spaceship crashed into debris.")
 		queue_free()

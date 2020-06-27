@@ -4,6 +4,9 @@ export var max_move_speed = 250
 export var min_move_speed = 50
 export var stop_distance = 25
 
+func _ready() -> void:
+	Globals.register_ship(self)
+
 func _process(_delta: float) -> void:
 	_look_at_mouse()
 	_move_to_mouse()

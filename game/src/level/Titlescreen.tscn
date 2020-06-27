@@ -74,7 +74,6 @@ custom_constants/shadow_as_outline = 3
 text = "Cursor Odyssey"
 align = 1
 valign = 1
-percent_visible = -0.0769231
 __meta__ = {
 "_edit_use_anchors_": false
 }

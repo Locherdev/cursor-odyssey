@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/font/Glacial_trackname.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/userinterface/UI.gd" type="Script" id=2]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Trackname" type="Label" parent="."]
+margin_left = 300.0
+margin_top = 950.0
+margin_right = 700.0
+margin_bottom = 1000.0
+custom_fonts/font = ExtResource( 1 )
+text = "Songname"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Debug_position" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 900.0
+margin_right = 200.0
+margin_bottom = 1000.0
+custom_fonts/font = ExtResource( 1 )
+text = "X: 3000
+Y: 3000"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Statusbar" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Statusbar"]
+margin_left = 700.0
+margin_top = 660.0
+margin_right = 990.0
+margin_bottom = 990.0
+color = Color( 0, 0, 0, 0.588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusHeader" type="Label" parent="Statusbar"]
+margin_left = 700.0
+margin_top = 665.0
+margin_right = 990.0
+margin_bottom = 696.0
+custom_fonts/font = ExtResource( 1 )
+text = "Status Bar"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusLog" type="RichTextLabel" parent="Statusbar"]
+margin_left = 710.0
+margin_top = 700.0
+margin_right = 990.0
+margin_bottom = 990.0
+custom_constants/line_separation = 5
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
