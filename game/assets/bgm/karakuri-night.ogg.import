@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/karakuri-night.ogg-23ca81bd98359ac596ce100800ec75ad.oggstr"
+
+[deps]
+
+source_file="res://assets/bgm/karakuri-night.ogg"
+dest_files=[ "res://.import/karakuri-night.ogg-23ca81bd98359ac596ce100800ec75ad.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
