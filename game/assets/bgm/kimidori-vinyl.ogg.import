@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kimidori-vinyl.ogg-4fbd2ca05f1291939c92514e84958267.oggstr"
+
+[deps]
+
+source_file="res://assets/bgm/kimidori-vinyl.ogg"
+dest_files=[ "res://.import/kimidori-vinyl.ogg-4fbd2ca05f1291939c92514e84958267.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
