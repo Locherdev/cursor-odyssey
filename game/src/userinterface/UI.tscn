@@ -7,48 +7,76 @@
 script = ExtResource( 2 )
 
 [node name="Trackname" type="Label" parent="."]
-margin_left = 300.0
-margin_top = 950.0
-margin_right = 700.0
-margin_bottom = 1000.0
+anchor_left = 0.3
+anchor_top = 0.9
+anchor_right = 0.7
+anchor_bottom = 1.0
+margin_bottom = -10.0
 custom_fonts/font = ExtResource( 1 )
 text = "Songname"
 align = 1
-valign = 1
+valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Debug_position" type="Label" parent="."]
+[node name="Debug" type="Control" parent="."]
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Debug_velocity" type="Label" parent="Debug"]
 margin_left = 10.0
-margin_top = 900.0
-margin_right = 200.0
-margin_bottom = 1000.0
+margin_top = 40.0
+margin_right = 98.0
+margin_bottom = 71.0
 custom_fonts/font = ExtResource( 1 )
-text = "X: 3000
-Y: 3000"
-valign = 1
+text = "Velocity"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Statusbar" type="Node2D" parent="."]
+[node name="Debug_position" type="Label" parent="Debug"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 94.0
+margin_bottom = 41.0
+custom_fonts/font = ExtResource( 1 )
+text = "Position"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ColorRect" type="ColorRect" parent="Statusbar"]
-margin_left = 700.0
-margin_top = 660.0
-margin_right = 990.0
-margin_bottom = 990.0
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+anchor_left = 0.7
+anchor_top = 0.66
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -10.0
+margin_bottom = -10.0
+size_flags_vertical = 4
 color = Color( 0, 0, 0, 0.588235 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StatusHeader" type="Label" parent="Statusbar"]
-margin_left = 700.0
-margin_top = 665.0
-margin_right = 990.0
-margin_bottom = 696.0
+[node name="StatusHeader" type="Label" parent="Control"]
+anchor_left = 0.7
+anchor_top = 0.66
+anchor_right = 1.0
+anchor_bottom = 0.7
+margin_right = -10.0
 custom_fonts/font = ExtResource( 1 )
 text = "Status Bar"
 align = 1
@@ -57,11 +85,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StatusLog" type="RichTextLabel" parent="Statusbar"]
-margin_left = 710.0
-margin_top = 700.0
-margin_right = 990.0
-margin_bottom = 990.0
+[node name="StatusLog" type="RichTextLabel" parent="Control"]
+anchor_left = 0.7
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
 custom_constants/line_separation = 5
 scroll_following = true
 __meta__ = {

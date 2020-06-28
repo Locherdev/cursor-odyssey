@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/userinterface/Pause.gd" type="Script" id=1]
+[ext_resource path="res://assets/font/Glacial_40.tres" type="DynamicFont" id=2]
+
+[node name="Pause-UI" type="CanvasLayer"]
+layer = -2
+
+[node name="Pause" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlackOverlay" type="ColorRect" parent="Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.352941 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="ColorRect" parent="Pause/BlackOverlay"]
+anchor_left = 0.43
+anchor_top = 0.47
+anchor_right = 0.57
+anchor_bottom = 0.53
+margin_left = -2.0
+margin_top = -2.0
+margin_right = 2.0
+margin_bottom = 2.0
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Pause/BlackOverlay"]
+anchor_left = 0.43
+anchor_top = 0.47
+anchor_right = 0.57
+anchor_bottom = 0.53
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Pause/BlackOverlay"]
+anchor_left = 0.4
+anchor_top = 0.45
+anchor_right = 0.6
+anchor_bottom = 0.55
+custom_fonts/font = ExtResource( 2 )
+text = "Paused"
+align = 1
+valign = 1
