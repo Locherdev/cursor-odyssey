@@ -31,7 +31,9 @@ func resize_screen(size):
 func pause(state):
 	if state:
 		spaceship.visible = not state
+		append_to_statuslog("[color=red]- SYSTEM: Game paused.[/color]")
 		emit_signal("pause_game")
 	else:
 		spaceship.visible = not state
+		append_to_statuslog("[color=red]- SYSTEM: Game resumed.[/color]")
 		emit_signal("resume_game")

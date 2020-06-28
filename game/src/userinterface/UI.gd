@@ -14,7 +14,9 @@ func _change_trackname(name):
 	trackname_label.text = "Music: " + name	
 
 func _append_to_statuslog(text):
-	status_log.text += "\n" + text
+	status_log.append_bbcode(text)
+	status_log.append_bbcode("\n")
+	#status_log.text += "\n" + text
 
 ### Debug Functions ###
 func _debug():

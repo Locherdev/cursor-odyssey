@@ -17,7 +17,7 @@ func _get_next_track() -> void:
 
 func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("debug")):
-		Globals.append_to_statuslog("- DEBUG: Skipped Song")
+		Globals.append_to_statuslog("[color=yellow]- DEBUG: Skipped Song[/color]")
 		_get_next_track()
 
 func _pause_current_track() -> void:
