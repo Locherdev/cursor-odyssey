@@ -1,22 +1,72 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/debris/debris00.png" type="Texture" id=1]
 [ext_resource path="res://src/debris/Debris.gd" type="Script" id=2]
+[ext_resource path="res://assets/effects/explosion_debris.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Explosion"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Debris:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Effect:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Effect:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
 
 [node name="Debris" type="KinematicBody2D"]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Debris" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
+[node name="Effect" type="Sprite" parent="."]
+scale = Vector2( 12, 12 )
+z_index = -1
+texture = ExtResource( 3 )
+hframes = 8
+
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 0
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PoolVector2Array( -153.478, -96.3588, -119.664, -131.643, -27.7774, -151.491, 110.42, -147.815, 139.088, -125.027, 155.996, -103.71, 157.466, 73.4474, 110.42, 150.632, -10.8703, 153.572, -81.4391, 119.758, -152.008, 71.9772 )
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -153.478, -96.3588, -119.664, -131.643, -27.7774, -151.491, 110.42, -147.815, 139.088, -125.027, 155.996, -103.71, 157.466, 73.4474, 110.42, 150.632, -10.8703, 153.572, -81.4391, 119.758, -152.008, 71.9772 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Explosion = SubResource( 1 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -6,6 +6,7 @@ var current_track = -1
 
 func _ready() -> void:
 	Globals.connect("set_music_volume", self, "_set_volume")
+	Globals.connect("death", self, "_on_death")
 	connect("finished", self, "_get_next_track")
 	_get_next_track()
 
@@ -31,6 +32,12 @@ func _set_volume(vol, flag) -> void:
 	Globals.game_volume = vol
 	Globals.append_to_statuslog("[color=red]- SYSTEM: Game volume [" + str(vol) + "/1.0][/color]")
 	volume_db = linear2db(vol)
+
+func _on_death() -> void:
+	$AnimationPlayer.play("fadeout")
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	queue_free()
 
 ### NOT USED ###
 func _pause_current_track() -> void:

@@ -5,9 +5,11 @@ export var min_move_speed = 50
 export var stop_distance = 250
 var vel: Vector2
 var distance
+var hitpoints = 3
 
 func _ready() -> void:
 	Globals.register_ship(self)
+	$Effect.visible = false
 
 func _process(_delta: float) -> void:
 	_look_at_mouse()
@@ -24,3 +26,16 @@ func _move_to_mouse():
 		var normalized_direction = direction.normalized()
 		var direction_distance = direction.length()
 		vel = move_and_slide(normalized_direction * max(min_move_speed, min(max_move_speed, direction_distance)))
+
+# Collision #
+func receive_damage():
+	print("Got hit")
+	hitpoints -= 1
+	if hitpoints == 0:
+		$Effect.visible = true
+		$AnimationPlayer.play("Explosion")
+		Globals.death()
+		set_process(false)
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	$Effect.visible = false

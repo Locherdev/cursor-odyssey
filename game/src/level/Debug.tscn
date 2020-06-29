@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/bg/space.png" type="Texture" id=2]
 [ext_resource path="res://src/debris/Debris.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/audioplayer/AudioStreamPlayer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/audioplayer/AudioStreamPlayer.gd" type="Script" id=5]
+[ext_resource path="res://src/userinterface/Death-UI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/userinterface/UI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/level/Debug.gd" type="Script" id=7]
 [ext_resource path="res://src/userinterface/Pause-UI.tscn" type="PackedScene" id=8]
@@ -18,6 +18,8 @@ script = ExtResource( 7 )
 
 [node name="Pause-UI" parent="Interface" instance=ExtResource( 8 )]
 pause_mode = 2
+
+[node name="Death-UI" parent="Interface" instance=ExtResource( 5 )]
 
 [node name="Background" type="CanvasLayer" parent="."]
 
@@ -81,7 +83,6 @@ scale = Vector2( 0.25, 0.25 )
 
 [node name="AudioStreamPlayer" parent="AudioPlayer" instance=ExtResource( 4 )]
 volume_db = -6.021
-script = ExtResource( 5 )
 
 [node name="Spaceship" parent="." instance=ExtResource( 1 )]
 position = Vector2( 512.25, 458.876 )

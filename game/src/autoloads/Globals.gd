@@ -5,6 +5,7 @@ signal statuslog(text)
 signal pause_game()
 signal resume_game()
 signal set_music_volume(vol, flag)
+signal death()
 
 var spaceship
 var game_volume = 0.5
@@ -29,3 +30,6 @@ func pause(state):
 
 func set_music_volume(flag):
 	emit_signal("set_music_volume", game_volume, flag)
+
+func death():
+	emit_signal("death")
