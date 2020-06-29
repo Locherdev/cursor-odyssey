@@ -80,8 +80,10 @@ scale = Vector2( 0.25, 0.25 )
 [node name="AudioPlayer" type="Node2D" parent="."]
 
 [node name="AudioStreamPlayer" parent="AudioPlayer" instance=ExtResource( 4 )]
+volume_db = -6.021
 script = ExtResource( 5 )
 
 [node name="Spaceship" parent="." instance=ExtResource( 1 )]
 position = Vector2( 512.25, 458.876 )
 scale = Vector2( 0.15, 0.15 )
+[connection signal="track_ended" from="AudioPlayer/AudioStreamPlayer" to="AudioPlayer/AudioStreamPlayer" method="_on_AudioStreamPlayer_track_ended"]

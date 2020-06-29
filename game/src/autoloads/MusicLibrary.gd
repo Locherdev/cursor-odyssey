@@ -65,3 +65,10 @@ func _ready() -> void:
 func set_current_track(index):
 	current_track = tracks[index]
 	return current_track.path
+
+func list_of_tracks(exclude_id) -> Array:
+	var list = []
+	for track in tracks:
+		if track.id != exclude_id:
+			list.append(track.id)
+	return list

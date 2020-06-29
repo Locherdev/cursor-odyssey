@@ -18,7 +18,7 @@ func _look_at_mouse():
 	rotation_degrees += 90
 	
 func _move_to_mouse():
-	distance = abs(get_local_mouse_position().y)
+	distance = abs(floor(get_local_mouse_position().y))
 	if position.distance_to(Vector2(abs(get_local_mouse_position().x),abs(get_local_mouse_position().y))) > stop_distance:
 		var direction = get_global_mouse_position() - position
 		var normalized_direction = direction.normalized()

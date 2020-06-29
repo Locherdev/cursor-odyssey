@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/font/Glacial_40.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/font/Glacial_Title.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/userinterface/TitleUI.gd" type="Script" id=3]
 [ext_resource path="res://assets/bg/title.png" type="Texture" id=4]
+[ext_resource path="res://assets/font/Glacial_trackname.tres" type="DynamicFont" id=5]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.466667, 0.0509804, 0.0509804, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
 
 [node name="TitleUI" type="Control"]
 anchor_right = 1.0
@@ -18,7 +27,7 @@ __meta__ = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 0
+layer = -1
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer"]
 texture = ExtResource( 4 )
@@ -34,7 +43,7 @@ anchor_bottom = 0.65
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Play Game"
+text = "Early Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -47,7 +56,7 @@ anchor_bottom = 0.8
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Enter DevRoom"
+text = "Mid Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -60,7 +69,7 @@ anchor_bottom = 0.95
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Quit Game"
+text = "Late Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,6 +87,47 @@ custom_constants/shadow_as_outline = 3
 text = "Cursor Odyssey"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+pause_mode = 2
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.4
+window_title = "SYSTEM"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+custom_fonts/font = ExtResource( 5 )
+text = "This button is not yet implemented!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OK" type="Button" parent="WindowDialog"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
+text = "OK"
 __meta__ = {
 "_edit_use_anchors_": false
 }

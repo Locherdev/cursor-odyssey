@@ -2,24 +2,37 @@ extends AudioStreamPlayer
 
 signal track_ended()
 var playback_position
+var current_track = -1
 
 func _ready() -> void:
+	Globals.connect("set_music_volume", self, "_set_volume")
 	connect("finished", self, "_get_next_track")
 	_get_next_track()
 
 func _get_next_track() -> void:
-	print("get next track")
-	var rand_number = randi() % Music.tracks.size()
-	var audiostream = load(Music.set_current_track(rand_number))
+	var tracks = Music.list_of_tracks(current_track)
+	current_track = tracks[randi() % tracks.size()]
+	var audiostream = load(Music.set_current_track(current_track))
+	audiostream.set_loop(false)
 	set_stream(audiostream)
+	Globals.change_trackname()
 	play()
-	Globals.track_ended()
 
 func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("debug")):
-		Globals.append_to_statuslog("[color=yellow]- DEBUG: Skipped Song[/color]")
+		Globals.append_to_statuslog("[color=yellow]- DEBUG: Skip current track[/color]")
 		_get_next_track()
 
+func _set_volume(vol, flag) -> void:
+	if flag:
+		vol = clamp(vol + 0.1, 0.0, 1.0)
+	else:
+		vol = clamp(vol - 0.1, 0.0, 1.0)
+	Globals.game_volume = vol
+	Globals.append_to_statuslog("[color=red]- SYSTEM: Game volume [" + str(vol) + "/1.0][/color]")
+	volume_db = linear2db(vol)
+
+### NOT USED ###
 func _pause_current_track() -> void:
 	playback_position = get_playback_position()
 	stop()

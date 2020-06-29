@@ -18,13 +18,7 @@ func _append_to_statuslog(text):
 	status_log.append_bbcode("\n")
 	#status_log.text += "\n" + text
 
-### Debug Functions ###
+### Debug Output Functions ###
 func _debug():
-	if (get_viewport().get_visible_rect().size.x < 500):
-		Globals.screen_mode = "s"
-	elif (get_viewport().get_visible_rect().size.x < 1000):
-		Globals.screen_mode = "m"
-	else:
-		Globals.screen_mode = "l"
 	$Debug/Debug_position.text = "Position: ("+ str(int(Globals.spaceship.position.x)) + "/" + str(int(Globals.spaceship.position.y))+")"
-	$Debug/Debug_velocity.text = "Velocity: "+ str(Globals.spaceship.vel.floor()) + "\nScreenmode: " + Globals.screen_mode + "\nScreensize: " + str(get_viewport().get_visible_rect().size.x) + "/" + str(get_viewport().get_visible_rect().size.y) + "\nDistance: " + str(Globals.spaceship.distance)
+	$Debug/Debug_velocity.text = "Velocity: "+ str(Globals.spaceship.vel.floor()) + "\nDistance: " + str(Globals.spaceship.distance)
