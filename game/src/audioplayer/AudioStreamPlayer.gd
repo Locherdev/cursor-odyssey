@@ -34,6 +34,9 @@ func _set_volume(vol, flag) -> void:
 	volume_db = linear2db(vol)
 
 func _on_death() -> void:
+	var animation = $AnimationPlayer.get_animation('fadeout')
+	var idx = animation.find_track(".:volume_db")
+	animation.track_set_key_value(idx, 0, linear2db(Globals.game_volume))
 	$AnimationPlayer.play("fadeout")
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
