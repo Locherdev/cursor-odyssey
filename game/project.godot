@@ -27,8 +27,8 @@ StatusMsg="*res://src/autoloads/StatusMsg.gd"
 
 [display]
 
-window/size/width=1000
-window/size/height=1000
+window/size/width=900
+window/size/height=900
 window/vsync/use_vsync=false
 window/stretch/mode="viewport"
 

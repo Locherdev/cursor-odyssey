@@ -7,14 +7,13 @@
 script = ExtResource( 2 )
 
 [node name="Trackname" type="Label" parent="."]
-anchor_left = 0.3
-anchor_top = 0.9
-anchor_right = 0.7
+anchor_top = 0.95
+anchor_right = 0.4
 anchor_bottom = 1.0
+margin_left = 10.0
 margin_bottom = -10.0
 custom_fonts/font = ExtResource( 1 )
 text = "Songname"
-align = 1
 valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -54,6 +53,8 @@ __meta__ = {
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -1.29236
+margin_bottom = -1.29236
 __meta__ = {
 "_edit_use_anchors_": false
 }
