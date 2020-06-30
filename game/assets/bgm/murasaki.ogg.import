@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/murasaki.ogg-ab69aa7b0cbbc6e99ae64f28dd3c26d3.oggstr"
+
+[deps]
+
+source_file="res://assets/bgm/murasaki.ogg"
+dest_files=[ "res://.import/murasaki.ogg-ab69aa7b0cbbc6e99ae64f28dd3c26d3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

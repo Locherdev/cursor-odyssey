@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/melolyn.ogg-fe62c67fe032e9a1a45b2bd2da6d4d8c.oggstr"
+
+[deps]
+
+source_file="res://assets/bgm/melolyn.ogg"
+dest_files=[ "res://.import/melolyn.ogg-fe62c67fe032e9a1a45b2bd2da6d4d8c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
