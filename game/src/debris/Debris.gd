@@ -6,7 +6,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 	if(body.name == 'Spaceship'):
 		$Area2D.visible = false
 		$AnimationPlayer.play("Explosion")
-		Globals.append_to_statuslog("- Spaceship crashed into debris.")
+		Globals.append_to_statuslog(StatusMsg.game_collisionDebris)
 		Globals.spaceship.receive_damage()
 
 func _process(delta: float) -> void:

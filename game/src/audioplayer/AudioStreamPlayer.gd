@@ -21,7 +21,7 @@ func _get_next_track() -> void:
 
 func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("debug")):
-		Globals.append_to_statuslog("[color=yellow]- DEBUG: Skip current track[/color]")
+		Globals.append_to_statuslog(StatusMsg.debug_skipSong)
 		_get_next_track()
 
 func _set_volume(vol, flag) -> void:
@@ -30,7 +30,7 @@ func _set_volume(vol, flag) -> void:
 	else:
 		vol = clamp(vol - 0.1, 0.0, 1.0)
 	Globals.game_volume = vol
-	Globals.append_to_statuslog("[color=red]- SYSTEM: Game volume [" + str(vol) + "/1.0][/color]")
+	Globals.append_to_statuslog(StatusMsg.system_volume(str(vol)))
 	volume_db = linear2db(vol)
 
 func _on_death() -> void:

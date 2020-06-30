@@ -22,10 +22,10 @@ func append_to_statuslog(text):
 func pause(state):
 	spaceship.visible = not state
 	if state:
-		append_to_statuslog("[color=red]- SYSTEM: Game paused.[/color]")
+		append_to_statuslog(StatusMsg.system_gamePaused)
 		emit_signal("pause_game")
 	else:
-		append_to_statuslog("[color=red]- SYSTEM: Game resumed.[/color]")
+		append_to_statuslog(StatusMsg.system_gameResumed)
 		emit_signal("resume_game")
 
 func set_music_volume(flag):
