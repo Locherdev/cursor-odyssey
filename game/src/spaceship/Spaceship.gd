@@ -1,11 +1,13 @@
 extends KinematicBody2D
 
+
+
 export var max_move_speed = 250
 export var min_move_speed = 50
 export var stop_distance = 250
 var vel: Vector2
 var distance
-var hitpoints = 3
+var hitpoints = 4
 
 func _ready() -> void:
 	Globals.register_ship(self)
@@ -29,13 +31,27 @@ func _move_to_mouse():
 
 # Collision #
 func receive_damage():
-	print("Got hit")
 	hitpoints -= 1
-	if hitpoints == 0:
-		$Effect.visible = true
-		$AnimationPlayer.play("Explosion")
-		Globals.death()
-		set_process(false)
+	match hitpoints:
+		3:
+			Globals.output_to_screen(StatusMsg.screen_smallDMG)
+		2:
+			Globals.output_to_screen(StatusMsg.screen_moderateDMG)
+		1:
+			Globals.output_to_screen(StatusMsg.screen_critialDMG)
+		0:
+			Globals.output_to_screen(StatusMsg.screen_deathDMG)
+			$Effect.visible = true
+			$AnimationPlayer.play("Explosion")
+			_play_sound()
+			Globals.death()
+			set_process(false)
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	$Effect.visible = false
+
+func _play_sound():
+	var soundstream = load(Music.sounds_total[1].path)
+	$Soundeffects.set_stream(soundstream)
+	$Soundeffects.volume_db = linear2db(Globals.game_volume)
+	$Soundeffects.play()

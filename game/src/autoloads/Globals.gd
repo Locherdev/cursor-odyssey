@@ -2,6 +2,7 @@ extends Node
 
 signal trackname(name)
 signal statuslog(text)
+signal screenOutput(text)
 signal pause_game()
 signal resume_game()
 signal set_music_volume(vol, flag)
@@ -19,6 +20,9 @@ func change_trackname():
 func append_to_statuslog(text):
 	emit_signal("statuslog", text)
 
+func output_to_screen(text):
+	emit_signal("screenOutput", text)
+	
 func pause(state):
 	spaceship.visible = not state
 	if state:

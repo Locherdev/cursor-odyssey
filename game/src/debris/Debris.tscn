@@ -68,5 +68,7 @@ polygon = PoolVector2Array( -153.478, -96.3588, -119.664, -131.643, -27.7774, -1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Explosion = SubResource( 1 )
+
+[node name="Soundeffects" type="AudioStreamPlayer" parent="."]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

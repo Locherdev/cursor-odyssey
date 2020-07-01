@@ -44,7 +44,11 @@ func _on_death() -> void:
 	$AnimationPlayer.play("fadeout")
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	queue_free()
+	stop()
+	var audiostream = load(Music.track_gameover)
+	set_stream(audiostream)
+	volume_db = linear2db(Globals.game_volume)
+	play()
 
 ### NOT USED ###
 func _pause_current_track() -> void:

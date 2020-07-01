@@ -1,25 +1,42 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/font/Glacial_trackname.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/userinterface/UI.gd" type="Script" id=2]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Text_In"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 2 )
 
-[node name="Trackname" type="Label" parent="."]
-anchor_top = 0.95
-anchor_right = 0.4
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_bottom = -10.0
-custom_fonts/font = ExtResource( 1 )
-text = "Songname"
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Debug" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 0
@@ -95,7 +112,37 @@ margin_left = 10.0
 margin_right = -10.0
 margin_bottom = -10.0
 custom_constants/line_separation = 5
+bbcode_enabled = true
 scroll_following = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Trackname" type="Label" parent="Control"]
+anchor_top = 0.95
+anchor_right = 0.4
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 1.29236
+margin_bottom = -8.70764
+custom_fonts/font = ExtResource( 1 )
+text = "Songname"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScreenOutput" type="RichTextLabel" parent="Control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.3
+custom_fonts/normal_font = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScreenPlayer" type="AnimationPlayer" parent="Control/ScreenOutput"]
+anims/Text_In = SubResource( 1 )
+[connection signal="animation_finished" from="Control/ScreenOutput/ScreenPlayer" to="." method="_on_ScreenPlayer_animation_finished"]

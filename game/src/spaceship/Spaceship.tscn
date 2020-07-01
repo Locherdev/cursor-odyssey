@@ -76,4 +76,6 @@ polygon = PoolVector2Array( -128.011, -138.957, -27.6253, -144.883, 27.613, -143
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -128.011, -138.957, -27.6253, -144.883, 27.613, -143.82, 131.362, -136.255, 152.436, 62.0567, 0.0546265, 146.353, -150.165, 59.8953 )
+
+[node name="Soundeffects" type="AudioStreamPlayer" parent="."]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

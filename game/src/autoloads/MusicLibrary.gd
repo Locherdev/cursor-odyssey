@@ -83,6 +83,19 @@ var track_gameover = "res://assets/bgm/kowloon.ogg"
 var track_credits = "res://assets/bgm/plumrain.ogg"
 var current_track = []
 
+### Sound Effects ###
+var sounds_total = [
+	{
+	"id": 0,
+	"name": "Explosion Debris",
+	"path": "res://assets/sfx/explosion_debris.wav"
+	},{
+	"id": 1,
+	"name": "Explosion Ship",
+	"path": "res://assets/sfx/Explosion_ship.wav"
+	}
+]
+
 func set_current_track(lib_id, index) -> String:
 	match lib_id:
 		0: current_track = tracks_early[index]
