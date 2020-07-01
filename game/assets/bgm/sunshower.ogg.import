@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sunshower.ogg-2a38a341ce67ecc52610b78218132065.oggstr"
+
+[deps]
+
+source_file="res://assets/bgm/sunshower.ogg"
+dest_files=[ "res://.import/sunshower.ogg-2a38a341ce67ecc52610b78218132065.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/plumrain.ogg-facc8571408d167db07fd440f7b632bf.oggstr"
+
+[deps]
+
+source_file="res://assets/bgm/plumrain.ogg"
+dest_files=[ "res://.import/plumrain.ogg-facc8571408d167db07fd440f7b632bf.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

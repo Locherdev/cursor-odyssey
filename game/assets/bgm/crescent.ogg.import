@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/crescent.ogg-ac080161a360b536a1610383ab6344b9.oggstr"
+
+[deps]
+
+source_file="res://assets/bgm/crescent.ogg"
+dest_files=[ "res://.import/crescent.ogg-ac080161a360b536a1610383ab6344b9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
