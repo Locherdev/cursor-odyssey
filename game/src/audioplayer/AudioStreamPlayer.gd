@@ -3,17 +3,21 @@ extends AudioStreamPlayer
 signal track_ended()
 var playback_position
 var current_track = -1
+export(int, "Early Game", "Mid Game", "Late Game", "Bonus") var music_library
+
 
 func _ready() -> void:
+	Globals.connect("pause_game", self, "_pause_current_track")
+	Globals.connect("resume_game", self, "_resume_current_track")
 	Globals.connect("set_music_volume", self, "_set_volume")
 	Globals.connect("death", self, "_on_death")
 	connect("finished", self, "_get_next_track")
 	_get_next_track()
 
 func _get_next_track() -> void:
-	var tracks = Music.list_of_tracks(current_track)
+	var tracks = Music.list_of_tracks(music_library, current_track)
 	current_track = tracks[randi() % tracks.size()]
-	var audiostream = load(Music.set_current_track(current_track))
+	var audiostream = load(Music.set_current_track(music_library, current_track))
 	audiostream.set_loop(false)
 	set_stream(audiostream)
 	Globals.change_trackname()
@@ -46,7 +50,14 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 func _pause_current_track() -> void:
 	playback_position = get_playback_position()
 	stop()
+	var audiostream = load(Music.track_options)
+	set_stream(audiostream)
+	play()
 
 func _resume_current_track() -> void:
+	stop()
+	var audiostream = load(Music.set_current_track(music_library, current_track))
+	audiostream.set_loop(false)
+	set_stream(audiostream)
 	play()
 	seek(playback_position)

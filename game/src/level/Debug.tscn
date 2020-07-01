@@ -82,6 +82,7 @@ scale = Vector2( 0.25, 0.25 )
 [node name="AudioPlayer" type="Node2D" parent="."]
 
 [node name="AudioStreamPlayer" parent="AudioPlayer" instance=ExtResource( 4 )]
+pause_mode = 2
 volume_db = -6.021
 
 [node name="Spaceship" parent="." instance=ExtResource( 1 )]
