@@ -16,8 +16,9 @@ func _ready() -> void:
 
 func _get_next_track() -> void:
 	var tracks = Music.list_of_tracks(music_library, current_track)
-	current_track = tracks[randi() % tracks.size()]
-	var audiostream = load(Music.set_current_track(music_library, current_track))
+	var rand = randi() % tracks.size()
+	current_track = tracks[rand] if music_library != 3 else rand
+	var audiostream = load(Music.set_current_track(music_library, current_track, rand))
 	audiostream.set_loop(false)
 	set_stream(audiostream)
 	Globals.change_trackname()
@@ -60,7 +61,7 @@ func _pause_current_track() -> void:
 
 func _resume_current_track() -> void:
 	stop()
-	var audiostream = load(Music.set_current_track(music_library, current_track))
+	var audiostream = load(Music.set_current_track(music_library, current_track, current_track))
 	audiostream.set_loop(false)
 	set_stream(audiostream)
 	play()
