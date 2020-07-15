@@ -6,20 +6,19 @@
 [ext_resource path="res://src/audioplayer/AudioStreamPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/userinterface/Death-UI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/userinterface/UI.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/level/Debug.gd" type="Script" id=7]
+[ext_resource path="res://assets/sprites/options.png" type="Texture" id=7]
 [ext_resource path="res://src/userinterface/Pause-UI.tscn" type="PackedScene" id=8]
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource( 7 )
+[node name="Debug" type="Node2D"]
 
 [node name="Interface" type="Node2D" parent="."]
-
-[node name="UI" parent="Interface" instance=ExtResource( 6 )]
 
 [node name="Pause-UI" parent="Interface" instance=ExtResource( 8 )]
 pause_mode = 2
 
 [node name="Death-UI" parent="Interface" instance=ExtResource( 5 )]
+
+[node name="UI" parent="Interface" instance=ExtResource( 6 )]
 
 [node name="Background" type="CanvasLayer" parent="."]
 
@@ -28,6 +27,25 @@ pause_mode = 2
 [node name="Sprite" type="Sprite" parent="Background/ParallaxBackground"]
 texture = ExtResource( 2 )
 centered = false
+
+[node name="Options" type="Button" parent="Background"]
+anchor_left = 0.932
+anchor_top = 0.011
+anchor_right = 0.989
+anchor_bottom = 0.064
+margin_left = -0.100037
+margin_top = 0.0999994
+margin_right = 50.6
+margin_bottom = 48.4
+rect_scale = Vector2( 0.5, 0.5 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+shortcut_in_tooltip = false
+action_mode = 0
+icon = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DebrisContainer" type="Node2D" parent="."]
 
@@ -89,4 +107,4 @@ music_library = 3
 [node name="Spaceship" parent="." instance=ExtResource( 1 )]
 position = Vector2( 512.25, 458.876 )
 scale = Vector2( 0.15, 0.15 )
-[connection signal="track_ended" from="AudioPlayer/AudioStreamPlayer" to="AudioPlayer/AudioStreamPlayer" method="_on_AudioStreamPlayer_track_ended"]
+[connection signal="pressed" from="Background/Options" to="Interface/UI" method="_pause_game"]

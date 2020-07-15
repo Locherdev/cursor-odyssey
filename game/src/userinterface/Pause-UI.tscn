@@ -1,10 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/userinterface/Pause.gd" type="Script" id=1]
-[ext_resource path="res://assets/font/Glacial_40.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/font/Glacial_trackname.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/font/GlacialIndifference-Regular.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 5
+outline_color = Color( 0.752941, 0.188235, 0.188235, 1 )
+extra_spacing_char = 8
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 35
+font_data = ExtResource( 3 )
 
 [node name="Pause-UI" type="CanvasLayer"]
-layer = -2
+layer = 10
+__meta__ = {
+"_edit_vertical_guides_": [ 288.981 ]
+}
 
 [node name="Pause" type="Control" parent="."]
 visible = false
@@ -24,10 +43,10 @@ __meta__ = {
 }
 
 [node name="Border" type="ColorRect" parent="Pause/BlackOverlay"]
-anchor_left = 0.43
-anchor_top = 0.47
-anchor_right = 0.57
-anchor_bottom = 0.53
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
 margin_left = -2.0
 margin_top = -2.0
 margin_right = 2.0
@@ -38,21 +57,177 @@ __meta__ = {
 }
 
 [node name="Background" type="ColorRect" parent="Pause/BlackOverlay"]
-anchor_left = 0.43
-anchor_top = 0.47
-anchor_right = 0.57
-anchor_bottom = 0.53
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.7
+margin_left = -0.663391
+margin_top = -0.307373
+margin_right = -0.663391
+margin_bottom = -0.307373
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Pause/BlackOverlay"]
-anchor_left = 0.4
-anchor_top = 0.45
-anchor_right = 0.6
-anchor_bottom = 0.55
-custom_fonts/font = ExtResource( 2 )
+[node name="Paused" type="Label" parent="Pause/BlackOverlay"]
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.4
+custom_fonts/font = SubResource( 1 )
 text = "Paused"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume" type="Control" parent="Pause/BlackOverlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolume" type="Label" parent="Pause/BlackOverlay/Volume"]
+anchor_left = 0.3
+anchor_top = 0.4
+anchor_right = 0.7
+anchor_bottom = 0.45
+custom_fonts/font = ExtResource( 2 )
+text = "Music Volume"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Volume" type="Label" parent="Pause/BlackOverlay/Volume"]
+anchor_left = 0.63
+anchor_top = 0.4
+anchor_right = 0.7
+anchor_bottom = 0.5
+margin_right = -20.0
+custom_fonts/font = ExtResource( 2 )
+text = "10%"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Track" type="Control" parent="Pause/BlackOverlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.44281
+margin_top = -1.59305
+margin_right = -1.44281
+margin_bottom = -1.59302
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicTitle" type="Label" parent="Pause/BlackOverlay/Track"]
+anchor_left = 0.3
+anchor_top = 0.48
+anchor_right = 0.7
+anchor_bottom = 0.5
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 2 )
+text = "Music Track"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextTrack" type="Button" parent="Pause/BlackOverlay/Track"]
+anchor_left = 0.63
+anchor_top = 0.52
+anchor_right = 0.7
+anchor_bottom = 0.55
+margin_right = -20.0
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Pause/BlackOverlay/Track"]
+anchor_left = 0.3
+anchor_top = 0.52
+anchor_right = 0.62
+anchor_bottom = 0.55
+margin_left = 20.0
+
+[node name="Track" type="Label" parent="Pause/BlackOverlay/Track/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.630249
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Gardening Power"
+align = 1
+valign = 1
+
+[node name="Title" type="Button" parent="Pause/BlackOverlay"]
+anchor_left = 0.3
+anchor_top = 0.58
+anchor_right = 0.7
+anchor_bottom = 0.61
+margin_left = 19.0
+margin_right = -20.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 0.235294, 0.235294, 1 )
+text = "Return to Title"
+
+[node name="Cancel" type="Button" parent="Pause/BlackOverlay"]
+anchor_left = 0.3
+anchor_top = 0.63
+anchor_right = 0.7
+anchor_bottom = 0.69
+margin_left = 19.0
+margin_right = -20.0
+custom_fonts/font = SubResource( 3 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="Pause/BlackOverlay"]
+pause_mode = 2
+process_priority = 1
+anchor_left = 0.3
+anchor_top = 0.4
+anchor_right = 0.62
+anchor_bottom = 0.5
+margin_left = 20.0
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.1
+value = 0.5
+tick_count = 11
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Pause"]
+pause_mode = 2
+anchor_left = 0.3
+anchor_top = 0.45
+anchor_right = 0.7
+anchor_bottom = 0.65
+margin_left = 40.0
+margin_right = -40.0
+window_title = "Return to Title"
+dialog_text = "        Returning to title will reset your
+		              current game progress!
+                      Are you sure?"
+dialog_autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Pause/BlackOverlay/Track/NextTrack" to="Pause" method="_next_track"]
+[connection signal="pressed" from="Pause/BlackOverlay/Title" to="Pause" method="_open_prompt"]
+[connection signal="pressed" from="Pause/BlackOverlay/Cancel" to="Pause" method="_pausing"]
+[connection signal="value_changed" from="Pause/BlackOverlay/HSlider" to="Pause" method="_adjust_volume"]
+[connection signal="confirmed" from="Pause/ConfirmationDialog" to="Pause" method="_accept_prompt"]

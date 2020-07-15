@@ -133,12 +133,13 @@ __meta__ = {
 }
 
 [node name="ScreenOutput" type="RichTextLabel" parent="Control"]
-modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.2
 anchor_top = 0.2
 anchor_right = 0.8
 anchor_bottom = 0.3
 custom_fonts/normal_font = ExtResource( 1 )
+visible_characters = 0
+percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

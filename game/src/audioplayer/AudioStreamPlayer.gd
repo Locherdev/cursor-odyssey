@@ -1,19 +1,27 @@
 extends AudioStreamPlayer
 
-signal track_ended()
 var playback_position
 var current_track = -1
+var skipped = false
 export(int, "Early Game", "Mid Game", "Late Game", "Bonus") var music_library
-
 
 func _ready() -> void:
 	Globals.connect("pause_game", self, "_pause_current_track")
 	Globals.connect("resume_game", self, "_resume_current_track")
 	Globals.connect("set_music_volume", self, "_set_volume")
+	Globals.connect("skip_to_next_track", self, "_skip_song")
 	Globals.connect("death", self, "_on_death")
 	connect("finished", self, "_get_next_track")
 	_get_next_track()
 
+func _skip_song() -> void:
+	var tracks = Music.list_of_tracks(music_library, current_track)
+	var rand = randi() % tracks.size()
+	current_track = tracks[rand] if music_library != 3 else rand
+	var audiostream = load(Music.set_current_track(music_library, current_track, rand))
+	skipped = true
+	Globals.change_trackname()
+	
 func _get_next_track() -> void:
 	var tracks = Music.list_of_tracks(music_library, current_track)
 	var rand = randi() % tracks.size()
@@ -24,19 +32,9 @@ func _get_next_track() -> void:
 	Globals.change_trackname()
 	play()
 
-func _process(delta: float) -> void:
-	if (Input.is_action_just_pressed("debug")):
-		Globals.append_to_statuslog(StatusMsg.debug_skipSong)
-		_get_next_track()
-
-func _set_volume(vol, flag) -> void:
-	if flag:
-		vol = clamp(vol + 0.1, 0.0, 1.0)
-	else:
-		vol = clamp(vol - 0.1, 0.0, 1.0)
-	Globals.game_volume = vol
-	Globals.append_to_statuslog(StatusMsg.system_volume(str(vol)))
-	volume_db = linear2db(vol)
+func _set_volume(volume) -> void:
+	Globals.game_volume = volume
+	volume_db = linear2db(volume)
 
 func _on_death() -> void:
 	var animation = $AnimationPlayer.get_animation('fadeout')
@@ -65,4 +63,7 @@ func _resume_current_track() -> void:
 	audiostream.set_loop(false)
 	set_stream(audiostream)
 	play()
+	if skipped: 
+		playback_position = 0
+		skipped = false
 	seek(playback_position)

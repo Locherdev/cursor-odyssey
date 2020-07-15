@@ -47,7 +47,7 @@ func receive_damage():
 			Globals.death()
 			set_process(false)
 
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 	$Effect.visible = false
 
 func _play_sound():

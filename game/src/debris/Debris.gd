@@ -13,7 +13,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 func _process(delta: float) -> void:
 	rotate(rotation_speed*delta)
 
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 	queue_free()
 
 func _play_sound():

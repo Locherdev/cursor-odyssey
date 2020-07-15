@@ -1,8 +1,6 @@
 extends Node
 
 ### Statusbar Output ###
-var debug_skipSong = "[color=yellow]- DEBUG: Skip current track[/color]"
-
 var game_collisionDebris = "- Spaceship crashed into debris."
 
 var system_gamePaused = "[color=red]- SYSTEM: Game paused.[/color]"
