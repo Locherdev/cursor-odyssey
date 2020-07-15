@@ -11,5 +11,5 @@ func system_volume(vol) -> String:
 ### Screen Output ###
 var screen_smallDMG = "[shake rate=5 level=10][color=lime]Small damage to ship's hull detected[/color][/shake]"
 var screen_moderateDMG = "[shake rate=5 level=10][color=yellow]Moderate damage to ship's hull detected[/color][/shake]"
-var screen_critialDMG = "[shake rate=5 level=10][color=red]Critical damage to ship's hull detected[/color][/shake]"
+var screen_criticalDMG = "[shake rate=5 level=10][color=red]Critical damage to ship's hull detected[/color][/shake]"
 var screen_deathDMG = "[shake rate=5 level=10][color=red]Unreparable damage to ship. Please evacuate.[/color][/shake]"

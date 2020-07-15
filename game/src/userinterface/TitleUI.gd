@@ -1,17 +1,23 @@
 extends Control
 
 func _ready() -> void:
-	if $PlayGame.connect("pressed", self, "_on_Button_pressed", [$PlayGame.name]) != OK: Globals.error_connect(self)
-	if $DevRoom.connect("pressed", self, "_on_Button_pressed", [$DevRoom.name]) != OK: Globals.error_connect(self)
-	if $QuitGame.connect("pressed", self, "_on_Button_pressed", [$QuitGame.name]) != OK: Globals.error_connect(self)
+	if $Easy.connect("pressed", self, "_on_Button_pressed", [$Easy.name]) != OK: Globals.error_connect(self)
+	if $Normal.connect("pressed", self, "_on_Button_pressed", [$Normal.name]) != OK: Globals.error_connect(self)
+	if $Hard.connect("pressed", self, "_on_Button_pressed", [$Hard.name]) != OK: Globals.error_connect(self)
 	if $WindowDialog/OK.connect("pressed", self, "_on_Button_pressed", [$WindowDialog/OK.name]) != OK: Globals.error_connect(self)
 
 func _on_Button_pressed(name):
 	match name:
 # warning-ignore:return_value_discarded
-		"PlayGame": get_tree().change_scene("res://src/level/Template.tscn")
-		"DevRoom": _toggle_popup()
-		"QuitGame": _toggle_popup()
+		"Easy": 
+			Globals.difficulty = 0
+			get_tree().change_scene("res://src/level/Template.tscn")
+		"Normal": 
+			Globals.difficulty = 1
+			get_tree().change_scene("res://src/level/Template.tscn")
+		"Hard": 
+			Globals.difficulty = 2
+			get_tree().change_scene("res://src/level/Template.tscn")
 		"OK": _toggle_popup()
 
 func _toggle_popup():

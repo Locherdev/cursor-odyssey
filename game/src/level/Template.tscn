@@ -31,6 +31,7 @@ pause_mode = 2
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxBackground"]
+position = Vector2( 0, -1.58667 )
 texture = ExtResource( 6 )
 centered = false
 
@@ -66,3 +67,5 @@ music_library = 3
 position = Vector2( 512.25, 458.876 )
 scale = Vector2( 0.15, 0.15 )
 [connection signal="pressed" from="Background/Options" to="Interface/UI" method="_pause_game"]
+
+[editable path="Interface/UI"]

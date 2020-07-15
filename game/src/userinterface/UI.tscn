@@ -1,7 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/font/Glacial_trackname.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/userinterface/UI.gd" type="Script" id=2]
+[ext_resource path="res://assets/font/GlacialIndifference-Regular.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+outline_size = 5
+outline_color = Color( 0.752941, 0.188235, 0.188235, 1 )
+extra_spacing_char = 8
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+outline_size = 5
+outline_color = Color( 0.752941, 0.188235, 0.188235, 1 )
+extra_spacing_bottom = 1
+extra_spacing_char = 8
+font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Text_In"
@@ -34,7 +50,7 @@ tracks/1/keys = {
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 2 )
 
-[node name="Debug" type="Control" parent="."]
+[node name="GameInfo" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
@@ -45,24 +61,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Debug_velocity" type="Label" parent="Debug"]
-margin_left = 10.0
-margin_top = 40.0
-margin_right = 98.0
-margin_bottom = 71.0
-custom_fonts/font = ExtResource( 1 )
-text = "Velocity"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Debug_position" type="Label" parent="Debug"]
+[node name="ShipLabel" type="Label" parent="GameInfo"]
+anchor_right = 0.35
+anchor_bottom = 0.05
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 94.0
-margin_bottom = 41.0
-custom_fonts/font = ExtResource( 1 )
-text = "Position"
+custom_fonts/font = SubResource( 2 )
+text = "Ship Condition"
+align = 1
+valign = 1
+
+[node name="ShipCondition" type="RichTextLabel" parent="GameInfo"]
+anchor_top = 0.05
+anchor_right = 0.35
+anchor_bottom = 0.15
+margin_left = 10.0
+margin_top = -60.0
+rect_min_size = Vector2( 305, 80 )
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[shake rate=5 level=10][color=lime][center]FINE[/center][/color][/shake]"
+tab_size = 1
+text = "FINE"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -70,7 +91,7 @@ __meta__ = {
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -1.29236
+margin_top = -1.29233
 margin_bottom = -1.29236
 __meta__ = {
 "_edit_use_anchors_": false

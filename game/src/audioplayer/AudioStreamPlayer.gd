@@ -12,8 +12,16 @@ func _ready() -> void:
 	if Globals.connect("skip_to_next_track", self, "_skip_song") != OK: Globals.error_connect(self)
 	if Globals.connect("death", self, "_on_death") != OK: Globals.error_connect(self)
 	if connect("finished", self, "_get_next_track") != OK: Globals.error_connect(self)
+	music_library = _set_music_library()
 	randomize()
 	_get_next_track()
+
+func _set_music_library() -> int:
+	match Globals.difficulty:
+		0: return 0
+		1: return 1
+		2: return 2
+		_: return 3
 
 func _skip_song() -> void:
 	var tracks = Music.list_of_tracks(music_library, current_track)
@@ -50,6 +58,7 @@ func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 	set_stream(audiostream)
 	volume_db = linear2db(Globals.game_volume)
 	play()
+	Globals.game_over()
 
 ### NOT USED ###
 func _pause_current_track() -> void:
