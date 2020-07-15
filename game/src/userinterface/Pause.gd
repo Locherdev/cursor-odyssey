@@ -1,7 +1,7 @@
 extends Control
 
 func _ready() -> void: 
-	Globals.connect("open_pause", self, "_pausing")
+	if Globals.connect("open_pause", self, "_pausing") != OK: Globals.error_connect(self)
 	$ConfirmationDialog.get_cancel().connect("pressed", self, "_cancel_prompt")
 
 func _input(event: InputEvent) -> void: if event.is_action_pressed("ui_cancel") && !Globals.disable_uiCancel: _pausing()
@@ -13,7 +13,7 @@ func _pausing() -> void:
 		visible = new_pause_state
 		Globals.pause(new_pause_state)
 
-func _update_pause():
+func _update_pause() -> void:
 	_update_track()
 	_update_vol()
 
@@ -46,4 +46,5 @@ func _accept_prompt() -> void:
 	get_tree().paused = new_pause_state
 	visible = new_pause_state
 	Globals.pause(new_pause_state)
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://src/level/Titlescreen.tscn")

@@ -11,6 +11,7 @@ signal death()
 signal open_pause()
 signal pause_game()
 signal resume_game()
+signal debris_destroyed()
 
 var spaceship
 var game_volume = 0.5
@@ -35,5 +36,6 @@ func pause(state):
 		emit_signal("resume_game")
 
 func death(): emit_signal("death")
+func debris_destroyed(): emit_signal("debris_destroyed")
 
 func error_connect(args): print(args, " could not be connected!")

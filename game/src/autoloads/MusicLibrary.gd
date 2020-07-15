@@ -113,13 +113,11 @@ var sounds_total = [
 ]
 
 func set_current_track(lib_id, index, total_index) -> String:
-	print("lib",lib_id,",index",index, ",total",total_index)
 	match lib_id:
 		0: current_track = tracks_early[index]
 		1: current_track = tracks_mid[index]
 		2: current_track = tracks_late[index]
 		_: current_track = tracks_total[total_index]
-	print(current_track)
 	return current_track.path
 
 func list_of_tracks(lib_id, exclude_id) -> Array:
@@ -131,5 +129,4 @@ func list_of_tracks(lib_id, exclude_id) -> Array:
 		2: tracks = tracks_late
 		_: tracks = tracks_total
 	for track in tracks: if track.id != exclude_id: list.append(track.id)
-	print(list)
 	return list

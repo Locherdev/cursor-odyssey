@@ -10,7 +10,7 @@ func _ready() -> void:
 	if Globals.connect("statuslog", self, "_append_to_statuslog") != OK: Globals.error_connect(self)
 	if Globals.connect("screenOutput", self, "_output_to_screen") != OK: Globals.error_connect(self)
 
-func _process(delta: float) -> void: _debug()
+func _process(_delta: float) -> void: _debug()
 
 func _change_trackname(name): trackname_label.text = "Music: " + name
 

@@ -8,7 +8,8 @@ func _ready() -> void:
 
 func _on_Button_pressed(name):
 	match name:
-		"PlayGame": get_tree().change_scene("res://src/level/Debug.tscn")
+# warning-ignore:return_value_discarded
+		"PlayGame": get_tree().change_scene("res://src/level/Template.tscn")
 		"DevRoom": _toggle_popup()
 		"QuitGame": _toggle_popup()
 		"OK": _toggle_popup()

@@ -6,19 +6,21 @@ var skipped = false
 export(int, "Early Game", "Mid Game", "Late Game", "Bonus") var music_library
 
 func _ready() -> void:
-	Globals.connect("pause_game", self, "_pause_current_track")
-	Globals.connect("resume_game", self, "_resume_current_track")
-	Globals.connect("set_music_volume", self, "_set_volume")
-	Globals.connect("skip_to_next_track", self, "_skip_song")
-	Globals.connect("death", self, "_on_death")
-	connect("finished", self, "_get_next_track")
+	if Globals.connect("pause_game", self, "_pause_current_track") != OK: Globals.error_connect(self)
+	if Globals.connect("resume_game", self, "_resume_current_track") != OK: Globals.error_connect(self)
+	if Globals.connect("set_music_volume", self, "_set_volume") != OK: Globals.error_connect(self)
+	if Globals.connect("skip_to_next_track", self, "_skip_song") != OK: Globals.error_connect(self)
+	if Globals.connect("death", self, "_on_death") != OK: Globals.error_connect(self)
+	if connect("finished", self, "_get_next_track") != OK: Globals.error_connect(self)
+	randomize()
 	_get_next_track()
 
 func _skip_song() -> void:
 	var tracks = Music.list_of_tracks(music_library, current_track)
 	var rand = randi() % tracks.size()
 	current_track = tracks[rand] if music_library != 3 else rand
-	var audiostream = load(Music.set_current_track(music_library, current_track, rand))
+# warning-ignore:return_value_discarded
+	Music.set_current_track(music_library, current_track, rand)
 	skipped = true
 	Globals.change_trackname()
 	
@@ -42,7 +44,7 @@ func _on_death() -> void:
 	animation.track_set_key_value(idx, 0, linear2db(Globals.game_volume))
 	$AnimationPlayer.play("fadeout")
 
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 	stop()
 	var audiostream = load(Music.track_gameover)
 	set_stream(audiostream)
