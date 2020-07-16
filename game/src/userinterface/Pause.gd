@@ -18,7 +18,9 @@ func _update_pause() -> void:
 	_update_vol()
 
 func _update_track(): $BlackOverlay/Track/ColorRect/Track.text = Music.current_track.name
-func _update_vol(): $BlackOverlay/Volume/Volume.text = str(int(Globals.game_volume * 100)) + "%"
+func _update_vol(): 
+	$BlackOverlay/HSlider.value = Globals.game_volume
+	$BlackOverlay/Volume/Volume.text = str(int(Globals.game_volume * 100)) + "%"
 
 func _next_track() -> void:
 	Globals.skip_to_next_track()

@@ -15,7 +15,6 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 384.077, 552.161 ],
 "_edit_vertical_guides_": [ 435.739, 600.896 ]
 }
-max_num_of_asteroids = 30
 
 [node name="Interface" type="Node2D" parent="."]
 
@@ -23,6 +22,9 @@ max_num_of_asteroids = 30
 pause_mode = 2
 
 [node name="UI" parent="Interface" instance=ExtResource( 2 )]
+
+[node name="AnimatedSprite" parent="Interface/UI/GameInfo/ColorRect/HBoxContainer" index="1"]
+frame = 2
 
 [node name="Death-UI" parent="Interface" instance=ExtResource( 5 )]
 
@@ -55,6 +57,8 @@ __meta__ = {
 }
 
 [node name="DebrisContainer" type="Node2D" parent="."]
+
+[node name="OrbContainer" type="Node2D" parent="."]
 
 [node name="AudioPlayer" type="Node2D" parent="."]
 

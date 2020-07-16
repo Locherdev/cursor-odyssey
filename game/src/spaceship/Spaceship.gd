@@ -33,15 +33,15 @@ func receive_damage(dmg):
 	hitpoints -= dmg
 	print("Damage received: ",dmg, "| HP: ", hitpoints)
 	if hitpoints <= 0: _explode()
-	elif hitpoints <= 25:
-		Globals.output_to_screen(StatusMsg.screen_criticalDMG)
-	elif hitpoints <= 50:
-		Globals.output_to_screen(StatusMsg.screen_moderateDMG)
+	elif hitpoints <= 33:
+		Globals.output_to_screen(Globals.screen_criticalDMG)
+	elif hitpoints <= 66:
+		Globals.output_to_screen(Globals.screen_moderateDMG)
 	else:
-		Globals.output_to_screen(StatusMsg.screen_smallDMG)
+		Globals.output_to_screen(Globals.screen_smallDMG)
 
 func _explode() -> void:
-	Globals.output_to_screen(StatusMsg.screen_deathDMG)
+	Globals.output_to_screen(Globals.screen_deathDMG)
 	$Effect.visible = true
 	$AnimationPlayer.play("Explosion")
 	_play_sound()

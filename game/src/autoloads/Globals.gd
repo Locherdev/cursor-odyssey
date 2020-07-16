@@ -1,6 +1,5 @@
 extends Node
 
-signal statuslog(text)
 signal screenOutput(text)
 
 signal trackname(name)
@@ -12,14 +11,27 @@ signal open_pause()
 signal pause_game()
 signal resume_game()
 signal debris_destroyed()
+signal orb_deleted()
+signal get_orb(orb_count)
 signal game_over()
 
-var spaceship
-var game_volume = 0.5
-var disable_uiCancel = false
-var difficulty = 0 #easy0, normal1, hard2
+### Screen Output ###
+const screen_smallDMG = "[shake rate=5 level=10][color=lime]Small damage to ship's hull detected[/color][/shake]"
+const screen_moderateDMG = "[shake rate=5 level=10][color=yellow]Moderate damage to ship's hull detected[/color][/shake]"
+const screen_criticalDMG = "[shake rate=5 level=10][color=red]Critical damage to ship's hull detected[/color][/shake]"
+const screen_deathDMG = "[shake rate=5 level=10][color=red]Unreparable damage to ship. Please evacuate.[/color][/shake]"
 
-func append_to_statuslog(text) -> void: emit_signal("statuslog", text)
+### Ship Condition ###
+const smallShake = "[shake rate=5 level=10][color=lime][center]FINE[/center][/color][/shake]"
+const mediumShake = "[shake rate=15 level=10][color=yellow][center]CAUTION[/center][/color][/shake]"
+const heavyShake = "[shake rate=30 level=15][color=red][center]CRITICAL[/center][/color][/shake]"
+
+var spaceship
+var game_volume: float = 0.5
+var disable_uiCancel: bool = false
+var orb_count: int = 0
+var difficulty: int  = 0 #easy0, normal1, hard2
+
 func output_to_screen(text) -> void: emit_signal("screenOutput", text)
 
 func change_trackname() -> void: emit_signal("trackname", Music.current_track.name)
@@ -30,15 +42,16 @@ func register_ship(ship) -> void: spaceship = ship
 func open_pause() -> void: emit_signal("open_pause")
 func pause(state) -> void:
 	spaceship.visible = not state
-	if state:
-		append_to_statuslog(StatusMsg.system_gamePaused)
-		emit_signal("pause_game")
-	else:
-		append_to_statuslog(StatusMsg.system_gameResumed)
-		emit_signal("resume_game")
+	if state: emit_signal("pause_game")
+	else: emit_signal("resume_game")
 
 func death() -> void: emit_signal("death")
 func debris_destroyed() -> void: emit_signal("debris_destroyed")
+func orb_deleted() -> void: emit_signal("orb_deleted")
+func get_orb() -> void: 
+	Globals.orb_count += 1
+	emit_signal("get_orb", Globals.orb_count)
+	
 func game_over() -> void: emit_signal("game_over")
 
 func error_connect(args) -> void: print(args, " could not be connected!")

@@ -33,13 +33,13 @@ layer = -1
 texture = ExtResource( 4 )
 centered = false
 
-[node name="Line2D" type="Line2D" parent="CanvasLayer"]
-
 [node name="Easy" type="Button" parent="."]
 anchor_left = 0.2
-anchor_top = 0.55
-anchor_right = 0.8
-anchor_bottom = 0.65
+anchor_top = 0.65
+anchor_right = 0.5
+anchor_bottom = 0.75
+margin_right = -10.0
+margin_bottom = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
@@ -50,9 +50,11 @@ __meta__ = {
 
 [node name="Normal" type="Button" parent="."]
 anchor_left = 0.2
-anchor_top = 0.7
-anchor_right = 0.8
-anchor_bottom = 0.8
+anchor_top = 0.75
+anchor_right = 0.5
+anchor_bottom = 0.85
+margin_right = -10.0
+margin_bottom = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
@@ -64,12 +66,27 @@ __meta__ = {
 [node name="Hard" type="Button" parent="."]
 anchor_left = 0.2
 anchor_top = 0.85
-anchor_right = 0.8
+anchor_right = 0.5
 anchor_bottom = 0.95
+margin_right = -10.0
+margin_bottom = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Late Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Highscores" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.65
+anchor_right = 0.8
+anchor_bottom = 0.95
+margin_left = 10.0
+margin_bottom = -10.0
+custom_fonts/font = ExtResource( 1 )
+text = "Highscores"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -93,9 +110,9 @@ __meta__ = {
 
 [node name="WindowDialog" type="WindowDialog" parent="."]
 pause_mode = 2
-anchor_left = 0.3
+anchor_left = 0.2
 anchor_top = 0.3
-anchor_right = 0.7
+anchor_right = 0.8
 anchor_bottom = 0.4
 window_title = "SYSTEM"
 __meta__ = {
@@ -131,3 +148,4 @@ text = "OK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="popup_hide" from="WindowDialog" to="." method="_on_WindowDialog_popup_hide"]

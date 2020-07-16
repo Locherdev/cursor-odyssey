@@ -1,26 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/font/Glacial_trackname.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/userinterface/UI.gd" type="Script" id=2]
 [ext_resource path="res://assets/font/GlacialIndifference-Regular.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/sprites/orbs/0003.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/orbs/0001.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/orbs/0002.png" type="Texture" id=6]
 
-[sub_resource type="DynamicFont" id=2]
-size = 30
-outline_size = 5
-outline_color = Color( 0.752941, 0.188235, 0.188235, 1 )
-extra_spacing_char = 8
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 50
-outline_size = 5
-outline_color = Color( 0.752941, 0.188235, 0.188235, 1 )
-extra_spacing_bottom = 1
-extra_spacing_char = 8
-font_data = ExtResource( 3 )
-
-[sub_resource type="Animation" id=1]
-resource_name = "Text_In"
+[sub_resource type="Animation" id=3]
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:percent_visible")
@@ -47,8 +34,52 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="DynamicFont" id=1]
+size = 30
+outline_size = 5
+outline_color = Color( 0.752941, 0.188235, 0.188235, 1 )
+extra_spacing_char = 8
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_size = 5
+outline_color = Color( 0.752941, 0.188235, 0.188235, 1 )
+extra_spacing_bottom = 1
+extra_spacing_char = 8
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 2 )
+
+[node name="ScreenOutput" type="RichTextLabel" parent="."]
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.3
+margin_top = -1.29233
+margin_bottom = -1.29233
+custom_fonts/normal_font = ExtResource( 1 )
+visible_characters = 0
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScreenPlayer" type="AnimationPlayer" parent="ScreenOutput"]
+anims/Text_In = SubResource( 3 )
 
 [node name="GameInfo" type="Control" parent="."]
 anchor_right = 1.0
@@ -66,7 +97,7 @@ anchor_right = 0.35
 anchor_bottom = 0.05
 margin_left = 10.0
 margin_top = 10.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Ship Condition"
 align = 1
 valign = 1
@@ -78,7 +109,7 @@ anchor_bottom = 0.15
 margin_left = 10.0
 margin_top = -60.0
 rect_min_size = Vector2( 305, 80 )
-custom_fonts/normal_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[shake rate=5 level=10][color=lime][center]FINE[/center][/color][/shake]"
 tab_size = 1
@@ -88,64 +119,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -1.29233
-margin_bottom = -1.29236
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-anchor_left = 0.7
-anchor_top = 0.66
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -10.0
-margin_bottom = -10.0
-size_flags_vertical = 4
-color = Color( 0, 0, 0, 0.588235 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StatusHeader" type="Label" parent="Control"]
-anchor_left = 0.7
-anchor_top = 0.66
-anchor_right = 1.0
-anchor_bottom = 0.7
-margin_right = -10.0
-custom_fonts/font = ExtResource( 1 )
-text = "Status Bar"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StatusLog" type="RichTextLabel" parent="Control"]
-anchor_left = 0.7
-anchor_top = 0.7
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
-custom_constants/line_separation = 5
-bbcode_enabled = true
-scroll_following = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Trackname" type="Label" parent="Control"]
+[node name="Trackname" type="Label" parent="GameInfo"]
 anchor_top = 0.95
 anchor_right = 0.4
 anchor_bottom = 1.0
 margin_left = 10.0
-margin_top = 1.29236
-margin_bottom = -8.70764
+margin_bottom = -10.0
 custom_fonts/font = ExtResource( 1 )
 text = "Songname"
 valign = 2
@@ -153,18 +132,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScreenOutput" type="RichTextLabel" parent="Control"]
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.3
-custom_fonts/normal_font = ExtResource( 1 )
-visible_characters = 0
-percent_visible = 0.0
+[node name="ColorRect" type="ColorRect" parent="GameInfo"]
+anchor_left = 0.8
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.29236
+margin_right = -10.0
+margin_bottom = -11.2924
+size_flags_vertical = 4
+color = Color( 0, 0, 0, 0.588235 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScreenPlayer" type="AnimationPlayer" parent="Control/ScreenOutput"]
-anims/Text_In = SubResource( 1 )
-[connection signal="animation_finished" from="Control/ScreenOutput/ScreenPlayer" to="." method="_on_ScreenPlayer_animation_finished"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameInfo/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OrbCount" type="Label" parent="GameInfo/ColorRect/HBoxContainer"]
+margin_top = 16.0
+margin_right = 90.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 90, 0 )
+custom_fonts/font = SubResource( 4 )
+text = "40x"
+align = 2
+valign = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="GameInfo/ColorRect/HBoxContainer"]
+position = Vector2( 131.389, 40.2943 )
+scale = Vector2( 1.2, 1.2 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+[connection signal="animation_finished" from="ScreenOutput/ScreenPlayer" to="." method="_on_ScreenPlayer_animation_finished"]

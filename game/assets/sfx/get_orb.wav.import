@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/get_orb.wav-c63365f16e72a307b235073e3f06b5fa.sample"
+
+[deps]
+
+source_file="res://assets/sfx/get_orb.wav"
+dest_files=[ "res://.import/get_orb.wav-c63365f16e72a307b235073e3f06b5fa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -109,6 +109,10 @@ var sounds_total = [
 	"id": 1,
 	"name": "Explosion Ship",
 	"path": "res://assets/sfx/Explosion_ship.wav"
+	},{
+	"id": 2,
+	"name": "Get Orb",
+	"path": "res://assets/sfx/get_orb.wav"
 	}
 ]
 
