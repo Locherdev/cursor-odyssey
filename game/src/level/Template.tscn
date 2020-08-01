@@ -27,6 +27,9 @@ pause_mode = 2
 margin_top = 15.0
 margin_bottom = 63.0
 
+[node name="AnimatedSprite" parent="Interface/UI/GameInfo/ColorRect/HBoxContainer" index="1"]
+frame = 2
+
 [node name="Death-UI" parent="Interface" instance=ExtResource( 5 )]
 
 [node name="Background" type="CanvasLayer" parent="."]
@@ -57,9 +60,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DebrisContainer" type="Node2D" parent="."]
-
 [node name="OrbContainer" type="Node2D" parent="."]
+
+[node name="DebrisContainer" type="Node2D" parent="."]
 
 [node name="AudioPlayer" type="Node2D" parent="."]
 
