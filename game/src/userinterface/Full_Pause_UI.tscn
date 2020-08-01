@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/userinterface/Basic_Pause_UI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/font/Glacial_trackname.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/font/GlacialIndifference-Regular.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://src/userinterface/Full_Pause_UI.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 3 )
+
+[node name="Full_Pause_UI" instance=ExtResource( 1 )]
+
+[node name="Pause_UI_Container" parent="." index="0"]
+visible = true
+script = ExtResource( 4 )
+
+[node name="Border" parent="Pause_UI_Container/BlackOverlay" index="0"]
+anchor_top = 0.25
+anchor_bottom = 0.75
+rect_pivot_offset = Vector2( 1395.82, -136.361 )
+
+[node name="Background" parent="Pause_UI_Container/BlackOverlay" index="1"]
+anchor_top = 0.25
+anchor_bottom = 0.75
+
+[node name="Paused" parent="Pause_UI_Container/BlackOverlay" index="2"]
+anchor_top = 0.25
+anchor_bottom = 0.35
+
+[node name="TitleLabel" parent="Pause_UI_Container/BlackOverlay/BGM_Volume" index="0"]
+anchor_top = 0.35
+anchor_bottom = 0.4
+
+[node name="Volume" parent="Pause_UI_Container/BlackOverlay/BGM_Volume" index="1"]
+anchor_top = 0.35
+anchor_bottom = 0.45
+
+[node name="TitleLabel" parent="Pause_UI_Container/BlackOverlay/SFX_Volume" index="0"]
+anchor_top = 0.43
+anchor_bottom = 0.48
+
+[node name="Volume" parent="Pause_UI_Container/BlackOverlay/SFX_Volume" index="1"]
+anchor_top = 0.43
+anchor_bottom = 0.53
+
+[node name="Cancel" parent="Pause_UI_Container/BlackOverlay" index="5"]
+anchor_top = 0.68
+anchor_bottom = 0.73
+
+[node name="BGM_Slider" parent="Pause_UI_Container/BlackOverlay" index="6"]
+anchor_top = 0.38
+anchor_bottom = 0.42
+
+[node name="SFX_Slider" parent="Pause_UI_Container/BlackOverlay" index="7"]
+anchor_top = 0.46
+anchor_bottom = 0.5
+
+[node name="Track" type="Control" parent="Pause_UI_Container/BlackOverlay" index="8"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.44281
+margin_top = -1.59305
+margin_right = -1.44281
+margin_bottom = -1.59302
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicTitle" type="Label" parent="Pause_UI_Container/BlackOverlay/Track" index="0"]
+anchor_left = 0.3
+anchor_top = 0.51
+anchor_right = 0.7
+anchor_bottom = 0.56
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 2 )
+text = "Music Track"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextTrack" type="Button" parent="Pause_UI_Container/BlackOverlay/Track" index="1"]
+anchor_left = 0.63
+anchor_top = 0.55
+anchor_right = 0.7
+anchor_bottom = 0.58
+margin_right = -20.0
+text = "Next"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Pause_UI_Container/BlackOverlay/Track" index="2"]
+anchor_left = 0.3
+anchor_top = 0.55
+anchor_right = 0.62
+anchor_bottom = 0.58
+margin_left = 20.0
+
+[node name="Track" type="Label" parent="Pause_UI_Container/BlackOverlay/Track/ColorRect" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.630249
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Gardening Power"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Button" parent="Pause_UI_Container/BlackOverlay" index="9"]
+anchor_left = 0.3
+anchor_top = 0.62
+anchor_right = 0.7
+anchor_bottom = 0.67
+margin_left = 19.0
+margin_right = -20.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 0.235294, 0.235294, 1 )
+text = "Return to Title"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="Pause_UI_Container" index="2"]
+pause_mode = 2
+anchor_left = 0.3
+anchor_top = 0.45
+anchor_right = 0.7
+anchor_bottom = 0.65
+margin_left = 40.0
+margin_right = -40.0
+window_title = "Return to Title"
+dialog_text = "        Returning to title will reset your
+		              current game progress!
+                      Are you sure?"
+dialog_autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Pause_UI_Container/BlackOverlay/Track/NextTrack" to="Pause_UI_Container" method="_next_track"]
+[connection signal="pressed" from="Pause_UI_Container/BlackOverlay/Title" to="Pause_UI_Container" method="_open_prompt"]
+[connection signal="confirmed" from="Pause_UI_Container/ConfirmationDialog" to="Pause_UI_Container" method="_accept_prompt"]
