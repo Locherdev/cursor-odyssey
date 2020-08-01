@@ -2,7 +2,7 @@ extends AnimatedSprite
 
 func _ready() -> void: position = _randomize_position(Globals.spaceship.position)
 
-func _physics_process(delta: float) -> void: if _out_of_focus(): _destroy()
+func _physics_process(_delta: float) -> void: if _out_of_focus(): _destroy()
 	
 func _randomize_position(pos) -> Vector2:
 	randomize()
@@ -24,16 +24,10 @@ func _out_of_focus() -> bool:
 func _get_item(body: Node) -> void:
 	if body.name == "Spaceship":
 		Globals.get_orb()
-		_play_sound()
+		Music.play_audio($Soundeffects, Music.sounds_total[2].path)
 		$AnimationPlayer.play("Destroy")
 	elif body.name == "Orb": 
 		if body != self: _destroy()
-
-func _play_sound():
-	var soundstream = load(Music.sounds_total[2].path)
-	$Soundeffects.set_stream(soundstream)
-	$Soundeffects.volume_db = linear2db(Globals.game_volume)
-	$Soundeffects.play()
 
 func _destroy() -> void:
 	Globals.orb_deleted()

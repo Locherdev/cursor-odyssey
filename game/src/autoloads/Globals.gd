@@ -3,7 +3,8 @@ extends Node
 signal screenOutput(text)
 
 signal trackname(name)
-signal set_music_volume(value)
+signal set_bgm_volume(value)
+signal set_sfx_volume(value)
 signal skip_to_next_track()
 
 signal death()
@@ -27,7 +28,8 @@ const mediumShake = "[shake rate=15 level=10][color=yellow][center]CAUTION[/cent
 const heavyShake = "[shake rate=30 level=15][color=red][center]CRITICAL[/center][/color][/shake]"
 
 var spaceship
-var game_volume: float = 0.5
+var bgm_volume: float = 0.5
+var sfx_volume: float = 0.5
 var disable_uiCancel: bool = false
 var orb_count: int = 0
 var difficulty: int  = 0 #easy0, normal1, hard2
@@ -35,13 +37,18 @@ var difficulty: int  = 0 #easy0, normal1, hard2
 func output_to_screen(text) -> void: emit_signal("screenOutput", text)
 
 func change_trackname() -> void: emit_signal("trackname", Music.current_track.name)
-func set_music_volume(value) -> void: emit_signal("set_music_volume", value)
+func set_bgm_volume(value) -> void: 
+	Globals.bgm_volume = value
+	emit_signal("set_bgm_volume", value)
+func set_sfx_volume(value) -> void: 
+	Globals.sfx_volume = value
+	emit_signal("set_sfx_volume", value)
 func skip_to_next_track() -> void: emit_signal("skip_to_next_track")
 
 func register_ship(ship) -> void: spaceship = ship
 func open_pause() -> void: emit_signal("open_pause")
 func pause(state) -> void:
-	spaceship.visible = not state
+	if spaceship: spaceship.visible = not state
 	if state: emit_signal("pause_game")
 	else: emit_signal("resume_game")
 

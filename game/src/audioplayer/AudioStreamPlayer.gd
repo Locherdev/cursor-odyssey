@@ -6,12 +6,12 @@ var skipped = false
 export(int, "Early Game", "Mid Game", "Late Game", "Bonus") var music_library
 
 func _ready() -> void:
-	if Globals.connect("pause_game", self, "_pause_current_track") != OK: Globals.error_connect(self)
-	if Globals.connect("resume_game", self, "_resume_current_track") != OK: Globals.error_connect(self)
-	if Globals.connect("set_music_volume", self, "_set_volume") != OK: Globals.error_connect(self)
-	if Globals.connect("skip_to_next_track", self, "_skip_song") != OK: Globals.error_connect(self)
-	if Globals.connect("death", self, "_on_death") != OK: Globals.error_connect(self)
-	if connect("finished", self, "_get_next_track") != OK: Globals.error_connect(self)
+	if Globals.connect("pause_game", self, "_pause_current_track") != OK: Globals.error_connect(self.name)
+	if Globals.connect("resume_game", self, "_resume_current_track") != OK: Globals.error_connect(self.name)
+	if Globals.connect("set_bgm_volume", self, "_set_volume") != OK: Globals.error_connect(self.name)
+	if Globals.connect("skip_to_next_track", self, "_skip_song") != OK: Globals.error_connect(self.name)
+	if Globals.connect("death", self, "_on_death") != OK: Globals.error_connect(self.name)
+	if connect("finished", self, "_get_next_track") != OK: Globals.error_connect(self.name)
 	music_library = _set_music_library()
 	randomize()
 	_get_next_track()
@@ -42,21 +42,19 @@ func _get_next_track() -> void:
 	Globals.change_trackname()
 	play()
 
-func _set_volume(volume) -> void:
-	Globals.game_volume = volume
-	volume_db = linear2db(volume)
+func _set_volume(volume) -> void: volume_db = linear2db(volume)
 
 func _on_death() -> void:
 	var animation = $AnimationPlayer.get_animation('fadeout')
 	var idx = animation.find_track(".:volume_db")
-	animation.track_set_key_value(idx, 0, linear2db(Globals.game_volume))
+	animation.track_set_key_value(idx, 0, linear2db(Globals.bgm_volume))
 	$AnimationPlayer.play("fadeout")
 
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 	stop()
 	var audiostream = load(Music.track_gameover)
 	set_stream(audiostream)
-	volume_db = linear2db(Globals.game_volume)
+	volume_db = linear2db(Globals.bgm_volume)
 	play()
 	Globals.game_over()
 

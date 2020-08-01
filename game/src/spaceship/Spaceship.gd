@@ -44,14 +44,8 @@ func _explode() -> void:
 	Globals.output_to_screen(Globals.screen_deathDMG)
 	$Effect.visible = true
 	$AnimationPlayer.play("Explosion")
-	_play_sound()
+	Music.play_audio($Soundeffects, Music.sfx_sounds_total[1].path)
 	Globals.death()
 	set_process(false)
 	
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void: $Effect.visible = false
-
-func _play_sound():
-	var soundstream = load(Music.sounds_total[1].path)
-	$Soundeffects.set_stream(soundstream)
-	$Soundeffects.volume_db = linear2db(Globals.game_volume)
-	$Soundeffects.play()

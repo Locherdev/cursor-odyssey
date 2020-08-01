@@ -43,12 +43,12 @@ func _collision(body: Node) -> void:
 		"res://src/spaceship/Spaceship.tscn":
 			collision_mask = 0
 			$AnimationPlayer.play("Explosion")
-			_play_sound(false)
+			Music.play_audio($Soundeffects, Music.sounds_total[0].path)
 			Globals.spaceship.receive_damage(_damage_calculation())
 		"res://src/debris/Debris.tscn":
 			if body != self: 
 				$AnimationPlayer.play("Explosion")
-				_play_sound(true)
+				Music.play_audio($Soundeffects, Music.sounds_total[0].path)
 
 func _deathAnimation_end(_anim_name: String) -> void: _destroy()
 
@@ -61,10 +61,3 @@ func _out_of_focus() -> bool:
 	var distance = get_global_position().distance_to(Globals.spaceship.get_global_position())
 	if distance > 1400: return true
 	else: return false
-
-func _play_sound(self_collide):
-	var soundstream = load(Music.sounds_total[0].path)
-	$Soundeffects.set_stream(soundstream)
-	if self_collide: $Soundeffects.volume_db = linear2db(0.1)
-	else: $Soundeffects.volume_db = linear2db(Globals.game_volume)
-	$Soundeffects.play()

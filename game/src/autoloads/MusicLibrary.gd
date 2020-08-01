@@ -113,6 +113,18 @@ var sounds_total = [
 	"id": 2,
 	"name": "Get Orb",
 	"path": "res://assets/sfx/get_orb.wav"
+	},{
+	"id": 3,
+	"name": "Menu Open",
+	"path": "res://assets/sfx/Menu_Select.wav"
+	},{
+	"id": 4,
+	"name": "Menu Close",
+	"path": "res://assets/sfx/Menu_Select_2.wav"
+	},{
+	"id": 5,
+	"name": "Menu Cancel",
+	"path": "res://assets/sfx/Menu_Back.wav"
 	}
 ]
 
@@ -134,3 +146,9 @@ func list_of_tracks(lib_id, exclude_id) -> Array:
 		_: tracks = tracks_total
 	for track in tracks: if track.id != exclude_id: list.append(track.id)
 	return list
+
+func play_audio(audio_player, audio_track, audio_mode: String = "SFX") -> void:
+	var soundstream = load(audio_track)
+	audio_player.set_stream(soundstream)
+	audio_player.volume_db = linear2db(Globals.bgm_volume) if audio_mode == "BGM" else linear2db(Globals.sfx_volume)
+	audio_player.play()

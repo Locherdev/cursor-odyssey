@@ -9,8 +9,3 @@ game/export_presets.cfg
 # Mono-specific ignores
 game/.mono/
 game/data_*/
-
-# Asssets-specific ignores
-bgm/*
-images/*
-!game/assets/*
