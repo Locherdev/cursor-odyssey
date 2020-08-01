@@ -3,7 +3,6 @@ extends "res://src/userinterface/Basic_Pause_UI.gd"
 onready var current_track = $BlackOverlay/Track/ColorRect/Track
 
 func _ready() -> void: 
-	if Globals.connect("open_pause", self, "_pausing") != OK: Globals.error_connect(self.name)
 	$ConfirmationDialog.get_cancel().connect("pressed", self, "_cancel_prompt")
 
 func _update_pause() -> void:
