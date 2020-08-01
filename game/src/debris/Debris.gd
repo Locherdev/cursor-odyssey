@@ -3,28 +3,23 @@ extends KinematicBody2D
 var rotation_speed = float(rand_range(-2,2))
 var debris_scale = float(rand_range(0.1,0.5))
 var propulsion_speed = int(rand_range(10,150))
-var destination: Vector2
-var origin: Vector2
+var propulsion
 
 func _ready() -> void: 
 	scale = Vector2(debris_scale, debris_scale)
 	position = _randomize_position(Globals.spaceship.position)
-	if Globals.difficulty > 0: _calculate_trajectory(Globals.spaceship.position)
+	if Globals.difficulty > 0: propulsion = _calculate_trajectory(Globals.spaceship.position)
 	if Globals.difficulty > 1: propulsion_speed *= 2
 
 func _physics_process(delta: float) -> void:
 	rotate(rotation_speed*delta)
-	if Globals.difficulty > 0: move_and_slide(_calculate_propulsion(), Vector2.UP)
+	if Globals.difficulty > 0: var _velocity = move_and_slide(propulsion, Vector2.UP)
 	if _out_of_focus(): _destroy()
 
-func _calculate_trajectory(ship_pos) -> void:
+func _calculate_trajectory(ship_pos):
 	var rand_x = int(rand_range(ship_pos.x - 400, ship_pos.x + 400))
 	var rand_y = int(rand_range(ship_pos.y - 400, ship_pos.y + 400))
-	destination = Vector2(rand_x, rand_y)
-	origin = position
-
-func _calculate_propulsion() -> Vector2:
-	var trajectory = destination - position
+	var trajectory = Vector2(rand_x, rand_y) - position
 	return trajectory.normalized() * Vector2(propulsion_speed,propulsion_speed)
 
 func _randomize_position(pos) -> Vector2:
