@@ -1,7 +1,8 @@
-# Godot-specific ignores
-game/.import/
-game/export.cfg
-game/export_presets.cfg
-
-# Imported translations (automatically generated from CSV files)
-*.translation
+# ignore everything but whitelist
+/*
+!.gitignore
+!/game
+/game/*
+!/game/assets
+!/game/src
+!/game/project.godot
