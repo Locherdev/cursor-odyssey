@@ -34,7 +34,7 @@ margin_bottom = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Early Game"
+text = "Easy"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -49,7 +49,7 @@ margin_bottom = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Mid Game"
+text = "Normal"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -64,7 +64,7 @@ margin_bottom = -10.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-text = "Late Game"
+text = "Hard"
 __meta__ = {
 "_edit_use_anchors_": false
 }
