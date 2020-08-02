@@ -49,6 +49,6 @@ func _explode() -> void:
 	$AnimationPlayer.play("Explosion")
 	Music.play_audio($Soundeffects, Music.sfx_sounds_total[1].path)
 	Globals.death()
-	set_process(false)
+	set_physics_process(false)
 	
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void: $Effect.visible = false
