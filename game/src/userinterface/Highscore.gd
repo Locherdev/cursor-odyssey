@@ -8,6 +8,13 @@ onready var highscore_names = [
 	$BlackOverlay/Background/Scorelist/Five_Name
 	]
 
+onready var highscore_diff = [
+	$BlackOverlay/Background/Scorelist/One_Difficulty,
+	$BlackOverlay/Background/Scorelist/Two_Difficulty,
+	$BlackOverlay/Background/Scorelist/Three_Difficulty,
+	$BlackOverlay/Background/Scorelist/Four_Difficulty,
+	$BlackOverlay/Background/Scorelist/Five_Difficulty,
+]
 onready var highscore_records = [
 	$BlackOverlay/Background/Scorelist/One_Score,
 	$BlackOverlay/Background/Scorelist/Two_Score,
@@ -22,7 +29,7 @@ func _ready() -> void:
 func _toggle_open() -> void:
 	var new_pause_state = not get_tree().paused
 	if new_pause_state: 
-		Highscores.update_highscores(highscore_names, highscore_records)
+		Highscores.update_highscores(highscore_names, highscore_diff, highscore_records)
 		Music.play_audio($SFX_Player, Music.sfx_sounds_total[3].path)
 	else:
 		Music.play_audio($SFX_Player, Music.sfx_sounds_total[4].path)
