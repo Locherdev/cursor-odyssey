@@ -26,6 +26,7 @@ anchor_bottom = 0.75
 [node name="Paused" parent="Pause_UI_Container/BlackOverlay" index="2"]
 anchor_top = 0.25
 anchor_bottom = 0.35
+text = "Paused"
 
 [node name="TitleLabel" parent="Pause_UI_Container/BlackOverlay/BGM_Volume" index="0"]
 anchor_top = 0.35
@@ -131,8 +132,8 @@ anchor_bottom = 0.65
 margin_left = 40.0
 margin_right = -40.0
 window_title = "Return to Title"
-dialog_text = "        Returning to title will reset your
-		              current game progress!
+dialog_text = "        Returning to title will end your
+		              current game session!
                       Are you sure?"
 dialog_autowrap = true
 __meta__ = {

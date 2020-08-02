@@ -8,8 +8,6 @@ onready var sfx_text = $BlackOverlay/SFX_Volume/Volume
 func _ready() -> void: 
 	if Globals.connect("open_pause", self, "_pausing") != OK: Globals.error_connect(self.name)
 
-func _input(event: InputEvent) -> void: if event.is_action_pressed("ui_cancel") && !Globals.disable_uiCancel: _pausing()
-
 func _pausing() -> void:
 		var new_pause_state = not get_tree().paused
 		if new_pause_state: 

@@ -9,6 +9,7 @@ signal skip_to_next_track()
 
 signal death()
 signal open_pause()
+signal open_highscores()
 signal pause_game()
 signal resume_game()
 signal debris_destroyed()
@@ -47,6 +48,7 @@ func skip_to_next_track() -> void: emit_signal("skip_to_next_track")
 
 func register_ship(ship) -> void: spaceship = ship
 func open_pause() -> void: emit_signal("open_pause")
+func open_highscores() -> void: emit_signal("open_highscores")
 func pause(state) -> void:
 	if spaceship: spaceship.visible = not state
 	if state: emit_signal("pause_game")

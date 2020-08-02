@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/level/Titlescreen.gd" type="Script" id=1]
 [ext_resource path="res://src/userinterface/TitleUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sprites/options.png" type="Texture" id=3]
 [ext_resource path="res://src/userinterface/Basic_Pause_UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/bgm/frankenstein.ogg" type="AudioStream" id=5]
+[ext_resource path="res://src/userinterface/Highscore.tscn" type="PackedScene" id=6]
 
 [node name="Titlescreen" type="Node2D"]
 script = ExtResource( 1 )
@@ -33,6 +34,8 @@ __meta__ = {
 }
 
 [node name="Basic_Pause_UI" parent="CanvasLayer" instance=ExtResource( 4 )]
+
+[node name="Highscore_Container" parent="CanvasLayer" instance=ExtResource( 6 )]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2

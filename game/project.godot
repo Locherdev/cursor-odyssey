@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 Globals="*res://src/autoloads/Globals.gd"
 Music="*res://src/autoloads/MusicLibrary.gd"
+Highscores="*res://src/autoloads/Highscores.gd"
 
 [display]
 
