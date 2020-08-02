@@ -5,6 +5,7 @@ var max_num_of_orbs: int
 
 func _ready() -> void:
 	Globals.orb_count = 0
+	Globals.disable_uiCancel = false
 	_set_map_properties(Globals.difficulty)
 	if Globals.connect("game_over", self, "_game_over") != OK: Globals.error_connect(self.name)
 	if Globals.connect("debris_destroyed", self, "_instance_asteroid")  != OK: Globals.error_connect(self.name)
@@ -41,6 +42,8 @@ func _instance_orb() -> void:
 	$OrbContainer.add_child(orb_node)
 
 func _game_over() -> void:
+	$Background/Options.queue_free()
+	Globals.disable_uiCancel = true
 	_clear_asteroids()
 	_clear_orbs()
 
