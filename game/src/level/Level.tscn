@@ -25,7 +25,7 @@ margin_top = 15.0
 margin_bottom = 63.0
 
 [node name="AnimatedSprite" parent="Interface/UI/GameInfo/ColorRect/HBoxContainer" index="1"]
-frame = 0
+frame = 2
 
 [node name="Death-UI" parent="Interface" instance=ExtResource( 6 )]
 

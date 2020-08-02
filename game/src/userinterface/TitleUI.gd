@@ -6,7 +6,7 @@ func _ready() -> void:
 	if $Hard.connect("pressed", self, "_on_Button_pressed", [2]) != OK: Globals.error_connect(self.name)
 	if $Highscores.connect("pressed", self, "_on_Button_pressed", [3]) != OK: Globals.error_connect(self.name)
 	var file2Check = File.new()
-	if !file2Check.file_exists(Highscores.highscores_path): Highscores.create_initial_highscores()
+	if !file2Check.file_exists(Highscores.highscores_path): Highscores.write_highscores()
 
 func _on_Button_pressed(button_id):
 	match button_id:

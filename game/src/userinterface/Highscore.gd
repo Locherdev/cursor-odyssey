@@ -19,15 +19,9 @@ onready var highscore_records = [
 func _ready() -> void:
 	if Globals.connect("open_highscores", self, "_toggle_open") != OK: Globals.error_connect(self.name)
 
-func _update_highscores(highscores = Highscores.load_highscores()) -> void:
-	for score in highscores:
-		highscore_names[score["id"]].text = score["name"]
-		highscore_records[score["id"]].text = score["record"]
-
 func _toggle_open() -> void:
 	var new_pause_state = not get_tree().paused
 	if new_pause_state: 
-		_update_highscores()
 		Highscores.update_highscores(highscore_names, highscore_records)
 		Music.play_audio($SFX_Player, Music.sfx_sounds_total[3].path)
 	else:
