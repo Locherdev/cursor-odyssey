@@ -43,12 +43,12 @@ func _collision(body: Node) -> void:
 		"res://src/spaceship/Spaceship.tscn":
 			collision_mask = 0
 			$AnimationPlayer.play("Explosion")
-			Music.play_audio($Soundeffects, Music.sounds_total[0].path)
+			Music.play_audio($Soundeffects, Music.sfx_sounds_total[0].path)
 			Globals.spaceship.receive_damage(_damage_calculation())
 		"res://src/debris/Debris.tscn":
 			if body != self: 
 				$AnimationPlayer.play("Explosion")
-				Music.play_audio($Soundeffects, Music.sounds_total[0].path)
+				Music.play_audio($Soundeffects, Music.sfx_sounds_total[0].path)
 
 func _deathAnimation_end(_anim_name: String) -> void: _destroy()
 

@@ -28,9 +28,10 @@ func _toggle_open() -> void:
 	var new_pause_state = not get_tree().paused
 	if new_pause_state: 
 		_update_highscores()
-		Music.play_audio($SFX_Player, Music.sounds_total[3].path)
+		Highscores.update_highscores(highscore_names, highscore_records)
+		Music.play_audio($SFX_Player, Music.sfx_sounds_total[3].path)
 	else:
-		Music.play_audio($SFX_Player, Music.sounds_total[4].path)
+		Music.play_audio($SFX_Player, Music.sfx_sounds_total[4].path)
 	get_tree().paused = new_pause_state
 	visible = new_pause_state
 	Globals.pause(new_pause_state)

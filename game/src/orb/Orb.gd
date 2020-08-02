@@ -24,7 +24,7 @@ func _out_of_focus() -> bool:
 func _get_item(body: Node) -> void:
 	if body.name == "Spaceship":
 		Globals.get_orb()
-		Music.play_audio($Soundeffects, Music.sounds_total[2].path)
+		Music.play_audio($Soundeffects, Music.sfx_sounds_total[2].path)
 		$AnimationPlayer.play("Destroy")
 	elif body.name == "Orb": 
 		if body != self: _destroy()
