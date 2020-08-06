@@ -24,13 +24,38 @@ layer = -1
 texture = ExtResource( 4 )
 centered = false
 
-[node name="Easy" type="Button" parent="."]
+[node name="TitleName" type="Label" parent="."]
+anchor_left = 0.1
+anchor_right = 0.9
+margin_bottom = 200.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 3
+custom_constants/shadow_as_outline = 3
+text = "Cursor Odyssey"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonContainer" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Easy" type="Button" parent="ButtonContainer"]
 anchor_left = 0.2
 anchor_top = 0.65
 anchor_right = 0.5
 anchor_bottom = 0.75
+margin_top = 5.0
 margin_right = -10.0
-margin_bottom = -10.0
+margin_bottom = -5.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
@@ -39,7 +64,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Normal" type="Button" parent="."]
+[node name="Normal" type="Button" parent="ButtonContainer"]
 anchor_left = 0.2
 anchor_top = 0.75
 anchor_right = 0.5
@@ -55,13 +80,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Hard" type="Button" parent="."]
+[node name="Hard" type="Button" parent="ButtonContainer"]
 anchor_left = 0.2
 anchor_top = 0.85
 anchor_right = 0.5
 anchor_bottom = 0.95
-margin_top = 10.0
+margin_top = 5.0
 margin_right = -10.0
+margin_bottom = -5.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
@@ -70,20 +96,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Highscores" type="Button" parent="."]
+[node name="Highscores" type="Button" parent="ButtonContainer"]
 anchor_left = 0.5
 anchor_top = 0.65
 anchor_right = 0.8
 anchor_bottom = 0.75
 margin_left = 10.0
-margin_bottom = -10.0
+margin_top = 5.0
+margin_bottom = -5.0
 custom_fonts/font = ExtResource( 1 )
 text = "Highscores"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Jukebox" type="Button" parent="."]
+[node name="Jukebox" type="Button" parent="ButtonContainer"]
 anchor_left = 0.5
 anchor_top = 0.75
 anchor_right = 0.8
@@ -97,32 +124,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Settings" type="Button" parent="."]
+[node name="Settings" type="Button" parent="ButtonContainer"]
 anchor_left = 0.5
 anchor_top = 0.85
 anchor_right = 0.8
 anchor_bottom = 0.95
 margin_left = 10.0
-margin_top = 10.0
+margin_top = 5.0
+margin_bottom = -5.0
 custom_fonts/font = ExtResource( 1 )
 text = "Settings"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TitleName" type="Label" parent="."]
-anchor_left = 0.1
-anchor_right = 0.9
-margin_bottom = 200.0
-custom_fonts/font = ExtResource( 2 )
-custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 3
-custom_constants/shadow_as_outline = 3
-text = "Cursor Odyssey"
-align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

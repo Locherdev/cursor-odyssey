@@ -20,13 +20,6 @@ __meta__ = {
 
 [node name="UI" parent="Interface" instance=ExtResource( 5 )]
 
-[node name="OrbCount" parent="Interface/UI/GameInfo/ColorRect/HBoxContainer" index="0"]
-margin_top = 15.0
-margin_bottom = 63.0
-
-[node name="AnimatedSprite" parent="Interface/UI/GameInfo/ColorRect/HBoxContainer" index="1"]
-frame = 2
-
 [node name="Death-UI" parent="Interface" instance=ExtResource( 6 )]
 
 [node name="Full_Pause_UI" parent="Interface" instance=ExtResource( 4 )]

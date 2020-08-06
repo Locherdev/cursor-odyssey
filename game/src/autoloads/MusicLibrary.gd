@@ -24,7 +24,7 @@ var tracks_early = [
 	},{
 	"id": 4,
 	"index": 4,
-	"name": "Walking Barefoot on Stardust",
+	"name": "Barefoot on Stardust",
 	"path": "res://assets/bgm/sunshower.ogg"
 	}
 ]
@@ -92,12 +92,29 @@ var tracks_late = [
 	}
 ]
 
-var tracks_total = tracks_early + tracks_mid + tracks_late
-var track_title = "res://assets/bgm/frankenstein.ogg"
-var track_options = "res://assets/bgm/pineapple.ogg"
-var track_gameover = "res://assets/bgm/kowloon.ogg"
-var track_credits = "res://assets/bgm/plumrain.ogg"
-var current_track = []
+var tracks_system = [
+	{
+	"id": 0,
+	"index": 16,
+	"name": "Titlescreen Theme",
+	"path": "res://assets/bgm/frankenstein.ogg" 
+	},{
+	"id": 1,
+	"index": 17,
+	"name": "Options Theme",
+	"path": "res://assets/bgm/pineapple.ogg"
+	},{
+	"id": 2,
+	"index": 18,
+	"name": "Gameover Theme",
+	"path": "res://assets/bgm/kowloon.ogg"
+	},{
+	"id": 3,
+	"index": 19,
+	"name": "Credits Theme",
+	"path": "res://assets/bgm/plumrain.ogg"
+	}
+]
 
 ### Sound Effects ###
 var sfx_sounds_total = [
@@ -127,6 +144,9 @@ var sfx_sounds_total = [
 	"path": "res://assets/sfx/Menu_Back.wav"
 	}
 ]
+
+var tracks_total = tracks_early + tracks_mid + tracks_late + tracks_system
+var current_track = []
 
 func set_current_track(lib_id: int, index: int, total_index: int) -> String:
 	match lib_id:

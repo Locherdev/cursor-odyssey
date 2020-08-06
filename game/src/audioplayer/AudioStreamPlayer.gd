@@ -52,7 +52,7 @@ func _on_death() -> void:
 
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 	stop()
-	var audiostream = load(Music.track_gameover)
+	var audiostream = load(Music.tracks_system[2].path)
 	set_stream(audiostream)
 	volume_db = linear2db(Globals.bgm_volume)
 	play()
@@ -62,7 +62,7 @@ func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 func _pause_current_track() -> void:
 	playback_position = get_playback_position()
 	stop()
-	var audiostream = load(Music.track_options)
+	var audiostream = load(Music.tracks_system[1].path)
 	set_stream(audiostream)
 	play()
 

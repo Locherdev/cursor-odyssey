@@ -1,13 +1,8 @@
 extends Control
 
 func _ready() -> void:
-	
-	if $Easy.connect("pressed", self, "_on_Button_pressed", [0]) != OK: Globals.error_connect(self.name)
-	if $Normal.connect("pressed", self, "_on_Button_pressed", [1]) != OK: Globals.error_connect(self.name)
-	if $Hard.connect("pressed", self, "_on_Button_pressed", [2]) != OK: Globals.error_connect(self.name)
-	if $Highscores.connect("pressed", self, "_on_Button_pressed", [3]) != OK: Globals.error_connect(self.name)
-	if $Jukebox.connect("pressed", self, "_on_Button_pressed", [4]) != OK: Globals.error_connect(self.name)
-	if $Settings.connect("pressed", self, "_on_Button_pressed", [5]) != OK: Globals.error_connect(self.name)
+	Globals.spaceship = null
+	for i in range(0, $ButtonContainer.get_child_count()): var _connection = $ButtonContainer.get_child(i).connect("pressed", self,"_on_Button_pressed", [i])
 	var file2Check = File.new()
 	if !file2Check.file_exists(Highscores.highscores_path): Highscores.write_highscores()
 
@@ -17,5 +12,5 @@ func _on_Button_pressed(button_id):
 			Globals.difficulty = button_id
 			var _success = get_tree().change_scene("res://src/level/Level.tscn")
 		3: Globals.open_highscores()
-		4: print("Jukebox")
+		4: Globals.open_jukebox()
 		5: Globals.open_pause()
