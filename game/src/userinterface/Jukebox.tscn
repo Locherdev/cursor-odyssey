@@ -283,7 +283,7 @@ custom_fonts/font = ExtResource( 2 )
 toggle_mode = true
 shortcut_in_tooltip = false
 group = ExtResource( 5 )
-text = "Walking Barefoot on Stardust"
+text = "Barefoot on Stardust"
 
 [node name="NormalTracks" type="Control" parent="BlackOverlay/Background/MusicSelection"]
 visible = false
