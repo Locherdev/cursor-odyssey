@@ -128,7 +128,7 @@ var sfx_sounds_total = [
 	}
 ]
 
-func set_current_track(lib_id, index, total_index) -> String:
+func set_current_track(lib_id: int, index: int, total_index: int) -> String:
 	match lib_id:
 		0: current_track = tracks_early[index]
 		1: current_track = tracks_mid[index]
@@ -136,7 +136,7 @@ func set_current_track(lib_id, index, total_index) -> String:
 		_: current_track = tracks_total[total_index]
 	return current_track.path
 
-func list_of_tracks(lib_id, exclude_id) -> Array:
+func list_of_tracks(lib_id: int, exclude_id: int) -> Array:
 	var list = []
 	var tracks = []
 	match lib_id:
@@ -147,7 +147,7 @@ func list_of_tracks(lib_id, exclude_id) -> Array:
 	for track in tracks: if track.id != exclude_id: list.append(track.id)
 	return list
 
-func play_audio(audio_player, audio_track, audio_mode: String = "SFX") -> void:
+func play_audio(audio_player: AudioStreamPlayer, audio_track: String, audio_mode: String = "SFX") -> void:
 	var soundstream = load(audio_track)
 	audio_player.set_stream(soundstream)
 	audio_player.volume_db = linear2db(Globals.bgm_volume) if audio_mode == "BGM" else linear2db(Globals.sfx_volume)

@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
-var rotation_speed = float(rand_range(-2,2))
-var debris_scale = float(rand_range(0.1,0.5))
-var propulsion_speed = int(rand_range(10,150))
+const oof_distance:int = 1400
+
+var rotation_speed:float = float(rand_range(-2,2))
+var debris_scale:float = float(rand_range(0.1,0.5))
+var propulsion_speed:int = int(rand_range(10,150))
 var propulsion
 
 func _ready() -> void: 
@@ -39,25 +41,21 @@ func _destroy() -> void:
 	queue_free()
 
 func _collision(body: Node) -> void:
-	match body.get_filename():
-		"res://src/spaceship/Spaceship.tscn":
-			collision_mask = 0
-			$AnimationPlayer.play("Explosion")
-			Music.play_audio($Soundeffects, Music.sfx_sounds_total[0].path)
-			Globals.spaceship.receive_damage(_damage_calculation())
-		"res://src/debris/Debris.tscn":
-			if body != self: 
-				$AnimationPlayer.play("Explosion")
-				Music.play_audio($Soundeffects, Music.sfx_sounds_total[0].path)
+	if body == Globals.spaceship:
+		collision_mask = 0
+		$AnimationPlayer.play("Explosion")
+		Music.play_audio($Soundeffects, Music.sfx_sounds_total[0].path)
+		Globals.spaceship.receive_damage(_damage_calculation())
+	elif body != self:
+		$AnimationPlayer.play("Explosion")
+		Music.play_audio($Soundeffects, Music.sfx_sounds_total[0].path)
 
 func _deathAnimation_end(_anim_name: String) -> void: _destroy()
 
 func _damage_calculation() -> int: 
 	var damage = int((debris_scale * 100) / 2)
-	if Globals.difficulty > 1: damage *= 1.5
-	return damage
+	return damage * 1.5 if Globals.difficulty > 1 else damage
 
 func _out_of_focus() -> bool:
 	var distance = get_global_position().distance_to(Globals.spaceship.get_global_position())
-	if distance > 1400: return true
-	else: return false
+	return true if distance > oof_distance else false

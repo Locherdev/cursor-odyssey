@@ -4,17 +4,20 @@ var max_num_of_asteroids: int
 var max_num_of_orbs: int
 
 func _ready() -> void:
+	if Globals.connect("game_over", self, "_game_over") != OK: Globals.error_connect(self.name)
+	if Globals.connect("debris_destroyed", self, "_create_new_asteroid")  != OK: Globals.error_connect(self.name)
+	if Globals.connect("orb_deleted", self, "_create_new_orb")  != OK: Globals.error_connect(self.name)
+	_setup_game()
+
+func _setup_game() -> void:
 	Globals.orb_count = 0
 	Globals.disable_uiCancel = false
-	_set_map_properties(Globals.difficulty)
-	if Globals.connect("game_over", self, "_game_over") != OK: Globals.error_connect(self.name)
-	if Globals.connect("debris_destroyed", self, "_instance_asteroid")  != OK: Globals.error_connect(self.name)
-	if Globals.connect("orb_deleted", self, "_instance_orb")  != OK: Globals.error_connect(self.name)
-	_initial_set_asteroids()
-	_initial_set_orbs()
-
-func _set_map_properties(diff) -> void:
-	match diff:
+	_setup_properties(Globals.difficulty)
+	_setup_asteroids()
+	_setup_orbs()
+	
+func _setup_properties(difficulty: int) -> void:
+	match difficulty:
 		0: 
 			max_num_of_asteroids = 15
 			max_num_of_orbs = 10
@@ -28,18 +31,10 @@ func _set_map_properties(diff) -> void:
 			max_num_of_asteroids = 0
 			max_num_of_orbs = 0
 
-func _initial_set_asteroids() -> void: for i in max_num_of_asteroids: _instance_asteroid()
-func _initial_set_orbs() -> void: for i in max_num_of_orbs: _instance_orb()
-
-func _instance_asteroid() -> void:
-	var new_asteroid = load("res://src/debris/Debris.tscn")
-	var asteroid_node = new_asteroid.instance()
-	$DebrisContainer.add_child(asteroid_node)
-	
-func _instance_orb() -> void:
-	var new_orb = load("res://src/orb/Orb.tscn")
-	var orb_node = new_orb.instance()
-	$OrbContainer.add_child(orb_node)
+func _setup_asteroids() -> void: for i in max_num_of_asteroids: _create_new_asteroid()
+func _setup_orbs() -> void: for i in max_num_of_orbs: _create_new_orb()
+func _create_new_asteroid() -> void: $DebrisContainer.add_child(load("res://src/debris/Debris.tscn").instance())
+func _create_new_orb() -> void: $OrbContainer.add_child(load("res://src/orb/Orb.tscn").instance())
 
 func _game_over() -> void:
 	$Background/Options.queue_free()

@@ -51,8 +51,7 @@ func open_pause() -> void: emit_signal("open_pause")
 func open_highscores() -> void: emit_signal("open_highscores")
 func pause(state) -> void:
 	if spaceship: spaceship.visible = not state
-	if state: emit_signal("pause_game")
-	else: emit_signal("resume_game")
+	var _emitter = emit_signal("pause_game") if state else emit_signal("resume_game")
 
 func death() -> void: emit_signal("death")
 func debris_destroyed() -> void: emit_signal("debris_destroyed")
