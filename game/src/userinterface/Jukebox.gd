@@ -11,7 +11,8 @@ onready var track_containers = [
 func _ready() -> void:
 	if Globals.connect("open_jukebox", self, "_toggle_open") != OK: Globals.error_connect(self.name)
 	if Globals.connect("set_bgm_volume", self, "_adjust_bgm_volume") != OK: Globals.error_connect(self.name)
-	$BGM_Player.volume_db = linear2db(Globals.bgm_volume)
+	volume_control = Globals.bgm_volume
+	$BGM_Player.volume_db = linear2db(volume_control)
 	Music.play_audio($BGM_Player, Music.tracks_total[16]["path"], "BGM")
 	_connect_all_buttons()
 
