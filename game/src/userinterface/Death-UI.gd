@@ -73,7 +73,6 @@ func _new_highscore_detected(index, score) -> void:
 	highscore_names[index].text = ""
 	highscore_orbs[index].text = str(score)
 
-
 func _show_bad_score(current_score) -> void:
 	$MainWindow/Bad_Userscore/Bad_Score.text = str(current_score)
 	$MainWindow/Bad_Userscore/Bad_Difficulty.text = str(Highscores._convert_difficulty_to_text(Globals.difficulty))
@@ -90,8 +89,9 @@ func _on_Button_pressed() -> void:
 	var _success = get_tree().change_scene("res://src/level/Titlescreen.tscn")
 
 func _on_set_name_button() -> void:
-	for index in len(highscore_names):
-		if highscore_names[index].text == "": highscore_names[index].text = enter_name_label.text
-	Highscores.set_new_record_name(enter_name_label.text)
-	enter_name_label.visible = false
-	set_name_button.visible = false
+	if enter_name_label.text.strip_edges(true, true) != "":
+		for index in len(highscore_names):
+			if highscore_names[index].text == "": highscore_names[index].text = enter_name_label.text
+		Highscores.set_new_record_name(enter_name_label.text)
+		enter_name_label.visible = false
+		set_name_button.visible = false
