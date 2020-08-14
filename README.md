@@ -1,6 +1,12 @@
 # Cursor Odyssey
 
-Game Project for Game Design (EDV: 119665a).
-Created via Godot Game Engine
+![GameCover](cover.jpg)
 
-![GameDesign](preview.png)
+Game Project for Game Design (EDV: 119665a).
+Created via Godot Game Engine.
+
+Project Members:
+
+- Ton Ngoc That | nt023 (Lead Programmer)
+- Fabian Reißer | fr055 (Debugger, Tester)
+- Marc Schillke | ms493 (Public Spokesman)
