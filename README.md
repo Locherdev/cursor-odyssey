@@ -2,11 +2,15 @@
 
 ![GameCover](cover.jpg)
 
-Game Project for Game Design (EDV: 119665a).
-Created via Godot Game Engine.
+## Controls:
 
-Project Members:
+*  LEFT MOUSEBUTTON: Choose Menu Option
+*  RIGHT MOUSEBUTTON: Pause/Unpause
 
-- Ton Ngoc That | nt023 (Lead Programmer)
-- Fabian Reißer | fr055 (Debugger, Tester)
-- Marc Schillke | ms493 (Public Spokesman)
+## Setting:
+The reconnaissance spaceship Odyssey is stranded and without fuel!
+This circumstance would be a sure death sentence yet there is still hope.
+
+It would seem that your mouse cursor exhibits a mysterious gravitational force
+that propels the Odyssey forward. Now it is in the hands of the player to drive
+the Odyssey back home while evading the tricks and evils of the vast universe. 
