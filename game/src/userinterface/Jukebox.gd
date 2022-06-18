@@ -10,7 +10,6 @@ onready var track_containers = [
 
 func _ready() -> void:
 	if Globals.connect("open_jukebox", self, "_toggle_open") != OK: Globals.error_connect(self.name)
-	if Globals.connect("set_bgm_volume", self, "_adjust_bgm_volume") != OK: Globals.error_connect(self.name)
 	volume_control = Globals.bgm_volume
 	$BGM_Player.volume_db = linear2db(volume_control)
 	Music.play_audio($BGM_Player, Music.tracks_total[16]["path"], "BGM")
@@ -41,7 +40,9 @@ func _select_group(button_name: String) -> void:
 	track_containers[int(button_name.right(1))].visible = true
 
 func _select_track(track_id: int) -> void: Music.play_audio($BGM_Player, Music.tracks_total[track_id].path, "BGM")
+	
 
 func _adjust_bgm_volume(value: float) -> void: 
 	volume_control = value
+	Globals.set_bgm_volume(value)
 	$BGM_Player.volume_db = linear2db(value)
