@@ -1,11 +1,13 @@
 # ignore everything but whitelist
 /*
+
 !.gitignore
 !cover.jpg
 !README.md
 !/game
+
 /game/*
-!/html
 !/game/assets
 !/game/src
 !/game/project.godot
+!/game/addons
