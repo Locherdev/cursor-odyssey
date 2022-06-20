@@ -36,12 +36,12 @@ centered = false
 anchor_left = 0.1
 anchor_right = 0.9
 margin_bottom = 200.0
-custom_fonts/font = ExtResource( 2 )
 custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 3
 custom_constants/shadow_as_outline = 3
+custom_fonts/font = ExtResource( 2 )
 text = "Cursor Odyssey"
 align = 1
 valign = 1
@@ -49,15 +49,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GaneDesignPrototype" type="Label" parent="CanvasLayer"]
+[node name="SubTitleName" type="Label" parent="CanvasLayer"]
 anchor_top = 0.2
 anchor_right = 1.0
 anchor_bottom = 0.25
 margin_top = -10.0
 margin_bottom = 28.0
-custom_fonts/font = SubResource( 1 )
 custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
-text = "Game Design Prototype 2020"
+custom_fonts/font = SubResource( 1 )
+text = "Wide Space Edition"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

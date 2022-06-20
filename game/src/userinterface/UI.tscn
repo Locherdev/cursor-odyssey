@@ -1,11 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/font/Glacial_trackname.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/userinterface/UI.gd" type="Script" id=2]
 [ext_resource path="res://assets/font/GlacialIndifference-Regular.otf" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/sprites/orbs/0003.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/orbs/0001.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/orbs/0002.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 length = 5.0
@@ -34,13 +31,6 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=2]
-size = 30
-outline_size = 5
-outline_color = Color( 0.752941, 0.188235, 0.188235, 1 )
-extra_spacing_char = 8
-font_data = ExtResource( 3 )
-
 [sub_resource type="DynamicFont" id=3]
 size = 50
 outline_size = 5
@@ -48,18 +38,6 @@ outline_color = Color( 0.752941, 0.188235, 0.188235, 1 )
 extra_spacing_bottom = 1
 extra_spacing_char = 8
 font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 40
-font_data = ExtResource( 3 )
-
-[sub_resource type="SpriteFrames" id=5]
-animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "default",
-"speed": 10.0
-} ]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -88,19 +66,6 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ShipLabel" type="Label" parent="GameInfo"]
-anchor_right = 0.35
-anchor_bottom = 0.05
-margin_left = 10.0
-margin_top = 10.0
-custom_fonts/font = SubResource( 2 )
-text = "Ship Condition"
-align = 1
-valign = 1
 
 [node name="ShipCondition" type="RichTextLabel" parent="GameInfo"]
 anchor_top = 0.05
@@ -115,57 +80,9 @@ bbcode_text = "[shake rate=5 level=10][color=lime][center]FINE[/center][/color][
 tab_size = 1
 text = "FINE"
 scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Trackname" type="Label" parent="GameInfo"]
-anchor_top = 0.95
+[node name="HealthContainer" type="Control" parent="GameInfo"]
 anchor_right = 0.4
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_bottom = -10.0
-custom_fonts/font = ExtResource( 1 )
-text = "Songname"
-valign = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="GameInfo"]
-anchor_left = 0.8
-anchor_top = 0.9
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -1.29236
-margin_right = -10.0
-margin_bottom = -11.2924
-size_flags_vertical = 4
-color = Color( 0, 0, 0, 0.588235 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GameInfo/ColorRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="OrbCount" type="Label" parent="GameInfo/ColorRect/HBoxContainer"]
-margin_top = 15.0
-margin_right = 90.0
-margin_bottom = 63.0
-rect_min_size = Vector2( 90, 0 )
-custom_fonts/font = SubResource( 4 )
-text = "40x"
-align = 2
-valign = 1
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="GameInfo/ColorRect/HBoxContainer"]
-position = Vector2( 131.389, 40.2943 )
-scale = Vector2( 1.2, 1.2 )
-frames = SubResource( 5 )
-frame = 2
-playing = true
+anchor_bottom = 0.1
+margin_right = 40.0
+margin_bottom = 40.0

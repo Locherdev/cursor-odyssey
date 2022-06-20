@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/bg/Space_Stars2.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/options.png" type="Texture" id=2]
+[ext_resource path="res://src/spaceship/Spaceship.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/userinterface/Full_Pause_UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/userinterface/UI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/userinterface/Death-UI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/audioplayer/AudioStreamPlayer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/level/Level.gd" type="Script" id=8]
+[ext_resource path="res://src/userinterface/healthbar/HealthBar.tscn" type="PackedScene" id=9]
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 384.077, 552.161 ],
+"_edit_vertical_guides_": [ 435.739, 600.896 ]
+}
+
+[node name="InterfaceLayer" parent="." instance=ExtResource( 5 )]
+
+[node name="Interface" type="Node2D" parent="InterfaceLayer"]
+
+[node name="HealthBar" parent="InterfaceLayer/Interface" instance=ExtResource( 9 )]
+margin_right = 137.0
+margin_bottom = 35.0
+
+[node name="Death-UI" parent="InterfaceLayer/Interface" instance=ExtResource( 6 )]
+
+[node name="Full_Pause_UI" parent="InterfaceLayer/Interface" instance=ExtResource( 4 )]
+
+[node name="Background" type="CanvasLayer" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_mirroring = Vector2( 64, 64 )
+
+[node name="TextureRect" type="TextureRect" parent="Background/ParallaxBackground/ParallaxLayer"]
+margin_right = 1600.0
+margin_bottom = 900.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+
+[node name="Options" type="Button" parent="Background"]
+anchor_left = 0.932
+anchor_top = 0.011
+anchor_right = 0.989
+anchor_bottom = 0.064
+margin_left = -0.100037
+margin_top = 0.0999994
+margin_right = 50.6
+margin_bottom = 48.4
+rect_scale = Vector2( 0.5, 0.5 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+shortcut_in_tooltip = false
+action_mode = 0
+icon = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OrbContainer" type="Node2D" parent="."]
+
+[node name="DebrisContainer" type="Node2D" parent="."]
+
+[node name="AudioPlayer" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" parent="AudioPlayer" instance=ExtResource( 7 )]
+pause_mode = 2
+volume_db = -6.021
+music_library = 3
+
+[node name="Spaceship" parent="." instance=ExtResource( 3 )]
+position = Vector2( 800, 450 )
+scale = Vector2( 0.15, 0.15 )
+
+[connection signal="pressed" from="Background/Options" to="InterfaceLayer" method="_pause_game"]
+
+[editable path="InterfaceLayer"]

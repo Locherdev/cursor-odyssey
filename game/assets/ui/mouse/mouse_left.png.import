@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/title.png-2758e70763372af4a84573f5b3ed110c.stex"
+path="res://.import/mouse_left.png-9efb0fc43d6a724a7689b331994c52a1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bg/title.png"
-dest_files=[ "res://.import/title.png-2758e70763372af4a84573f5b3ed110c.stex" ]
+source_file="res://assets/ui/mouse/mouse_left.png"
+dest_files=[ "res://.import/mouse_left.png-9efb0fc43d6a724a7689b331994c52a1.stex" ]
 
 [params]
 
