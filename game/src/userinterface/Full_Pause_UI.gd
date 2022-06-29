@@ -5,6 +5,7 @@ onready var current_track = $BlackOverlay/Track/ColorRect/Track
 func _ready() -> void: 
 	$ConfirmationDialog.get_cancel().connect("pressed", self, "_cancel_prompt")
 	$ConfirmationDialog.get_close_button().visible = false
+	$ConfirmationDialog.get_child(1).align = HALIGN_CENTER # centers the popup text
 	
 func _input(event: InputEvent) -> void: if event.is_action_pressed("ui_cancel") && !Globals.disable_uiCancel: _pausing()
 

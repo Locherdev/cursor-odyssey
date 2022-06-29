@@ -22,8 +22,9 @@ func _output_to_screen(text):
 	_update_ship_condition()
 
 func _update_ship_condition() -> void:
-	if Globals.spaceship.hitpoints <= 33: ship_condition.set_bbcode(Globals.heavyShake)
-	elif Globals.spaceship.hitpoints <= 66: ship_condition.set_bbcode(Globals.mediumShake)
+	var health = Globals.spaceship.get_health()
+	if health <= 33: ship_condition.set_bbcode(Globals.heavyShake)
+	elif health <= 66: ship_condition.set_bbcode(Globals.mediumShake)
 	else: ship_condition.set_bbcode(Globals.smallShake)
 
 func _pause_game() -> void: Globals.open_pause()

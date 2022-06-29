@@ -123,5 +123,6 @@ shape = SubResource( 4 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 5 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_deathAnimation_end"]
 [connection signal="body_entered" from="Personal_Space" to="." method="_collision"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/userinterface/healthbar/HealthBar.tscn" type="PackedScene" id=3]
+
+[node name="InterfaceLayer" type="CanvasLayer"]
+layer = 10
+
+[node name="HealthBar" parent="." instance=ExtResource( 3 )]
+
+[editable path="HealthBar"]
